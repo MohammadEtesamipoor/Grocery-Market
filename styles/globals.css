@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+@theme {
+    --color-NestMartBrand1: #3BB77E;
+    --color-NestMartBrand2: #FDC040;
+    --color-NestMartBrandLight: #81B13D;
+    --color-NestMartTextHeading: #253D4E;
+    --color-NestMartTextBody: #7E7E7E;
+    --color-NestMartBorder1: #E5E5E5;
+    --color-NestMartBackground_grey1: #F2F3F4;
+    --color-NestMartBackground_grey2: #D7DEDB;
+    --color-NestMartDanger: #FD6E6E;
+    --color-NestMartBorder3: #BCE3C9;
+    --color-NestMartTextMuted: #B6B6B6;
+    --color-NestMartBackgroundMuted: #F5F5F5;
+}
+
 @media (min-width: 1920px) {
     .container {
         max-width: 1920px;
@@ -13,21 +28,21 @@
 }
 
 
-@font-face {
-    font-family: 'Quicksand';
-    src: url('/assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
+/*@font-face {*/
+/*    font-family: 'Quicksand';*/
+/*    src: url('/assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf') format('truetype');*/
+/*    font-weight: 400;*/
+/*    font-style: normal;*/
+/*    font-display: swap;*/
+/*}*/
 
-@font-face {
-    font-family: 'Montserrat';
-    src: url('/assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
+/*@font-face {*/
+/*    font-family: 'Montserrat';*/
+/*    src: url('/assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');*/
+/*    font-weight: 600;*/
+/*    font-style: normal;*/
+/*    font-display: swap;*/
+/*}*/
 
 body {
     font-family: 'Quicksand', sans-serif !important;
@@ -41,6 +56,7 @@ body {
 #menu-list {
     transition: transform 0.2s ease-in-out;
 }
+
 
 .category-item {
     @apply flex gap-4 items-center font-bold cursor-pointer text-NestMartTextHeading;
@@ -83,8 +99,10 @@ body {
 }
 
 .product-cart {
-    @apply relative flex flex-col border border-opacity-30 border-[#BCE3C9]  gap-2 rounded-[10px] p-3 shadow-lg shadow-zinc-800/10
-    md:shadow-sm w-fit max-w-40 md:max-w-72 md:min-h-10;
+    @apply relative flex flex-col border
+    border-[#BCE3C9] gap-2 rounded-[10px] p-3
+    shadow-lg shadow-zinc-800/10 md:shadow-sm
+    w-fit max-w-40 md:max-w-72 md:min-h-10;
 }
 
 .product-cart:hover {
