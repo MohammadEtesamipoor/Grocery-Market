@@ -1,1 +1,199 @@
 @import "tailwindcss";
+
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1920px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 168px;
+    }
+}
+
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('/assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif !important;
+}
+
+.toggl {
+    display: block;
+}
+
+
+#menu-list {
+    transition: transform 0.2s ease-in-out;
+}
+
+.category-item {
+    @apply flex gap-4 items-center font-bold cursor-pointer text-NestMartTextHeading;
+    @apply md:border md:border-[#F2F3F4] md:py-2 md:px-4 md:rounded-md;
+}
+
+.category-item:hover {
+    @apply md:border-[#BCE3C9] ;
+}
+
+.featured-item {
+    @apply rounded-[10px] flex flex-col items-center pb-3.5 px-4 box-content hover:outline hover:outline-1 hover:shadow-md hover:outline-[#81B13D];
+}
+
+.featured-item img {
+    @apply max-w-20 h-auto md:max-w-32 md:min-h-32;
+}
+
+.banner-slide {
+    @apply w-5/6 h-52 rounded-md flex flex-col items-center justify-center md:justify-center md:items-start md:pl-12  font-bold text-NestMartTextHeading;
+}
+
+
+.banner-slide img {
+    @apply absolute bottom-0 right-0 object-contain;
+}
+
+.banner-btn {
+    @apply text-white px-4 py-2 text-xs font-bold rounded-[3px] flex gap-2.5 items-center justify-center;
+}
+
+
+.rating {
+    @apply flex gap-2;
+}
+
+.star-rating {
+    @apply h-3 w-3 flex;
+    @apply fill-[#CDCDCD];
+}
+
+.product-cart {
+    @apply relative flex flex-col border border-opacity-30 border-[#BCE3C9]  gap-2 rounded-[10px] p-3 shadow-lg shadow-zinc-800/10
+    md:shadow-sm w-fit max-w-40 md:max-w-72 md:min-h-10;
+}
+
+.product-cart:hover {
+    @apply md:shadow-lg;
+}
+
+.product-cart img {
+    @apply aspect-[4/3]  md:px-10 md:py-16 md:aspect-square ;
+}
+
+
+.star-active {
+    @apply !fill-yellow-500 ;
+}
+
+.sliceText {
+    @apply w-max overflow-ellipsis overflow-hidden max-w-[140px] line-clamp-2  md:max-w-fit md:min-h-10;
+}
+
+
+.product-slide {
+    @apply max-w-40 md:max-w-72;
+}
+
+.product-label {
+    @apply rounded-[30px] py-2.5 px-4 absolute top-0 left-0 text-white text-xs rounded-bl-none;
+}
+
+.sold-bar {
+    @apply bg-NestMartBrand1 h-1 rounded-l-sm;
+}
+
+.not-sold-bar {
+    @apply bg-NestMartBorder1 h-1 rounded-r-sm;
+}
+
+.sold-products {
+    @apply flex;
+}
+
+.cart-btn {
+    @apply bg-NestMartBrand1 py-2 px-4 text-white flex items-center justify-center rounded gap-1 text-sm font-bold;
+}
+
+.product-cart-offer {
+    @apply flex flex-col  gap-2 rounded-[10px] px-7 py-6 shadow-lg shadow-zinc-800/10 w-full bg-white mx-3 min-w-80  ;
+}
+
+.product-cart-offer-slide {
+    @apply w-11/12  flex flex-col  items-center gap-3 px-8 ;
+}
+
+.product-cart-offer-slide > :nth-child(2) {
+    @apply md:mt-20;
+}
+
+
+.product-cart-offer-img {
+    @apply absolute -z-10 w-full h-[200px] object-center object-cover rounded-2xl  md:object-cover md:aspect-[4/3] md:h-fit ;
+}
+
+.offer-time {
+    @apply mt-11 flex;
+}
+
+.offer-time-number {
+    @apply text-3xl font-bold text-NestMartBrand1 w-[2ch];
+}
+
+.offer-time-text {
+    @apply text-sm text-NestMartTextBody -mt-1.5;
+}
+
+.list-top-products {
+    @apply flex flex-col gap-6;
+}
+
+.top-product {
+    @apply flex gap-4 md:gap-6;
+}
+
+.top-product img {
+    @apply aspect-square w-20 md:w-fit;
+}
+
+.top-product-slice-text {
+    @apply w-40 overflow-ellipsis overflow-hidden line-clamp-1 max-w-[156px] md:w-full md:overflow-auto md:max-w-60 md:line-clamp-2;
+}
+
+.top-product-info {
+    @apply flex flex-col gap-1.5;
+}
+
+.contact-us {
+    @apply flex flex-col gap-5;
+}
+
+.contact-us ul {
+    @apply flex flex-col gap-5 md:gap-3.5;
+}
+
+.contact-us li {
+    @apply flex  gap-2;
+}
+
+.contact-us li svg {
+    @apply w-4 aspect-square ;
+}
+
+.contact-us li span {
+    @apply font-bold;
+}
