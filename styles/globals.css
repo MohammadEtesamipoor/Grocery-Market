@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+@config '../tailwind.config.js';
 @theme {
     --color-NestMartBrand1: #3BB77E;
     --color-NestMartBrand2: #FDC040;
@@ -13,18 +14,7 @@
     --color-NestMartBorder3: #BCE3C9;
     --color-NestMartTextMuted: #B6B6B6;
     --color-NestMartBackgroundMuted: #F5F5F5;
-}
 
-@media (min-width: 1920px) {
-    .container {
-        max-width: 1920px;
-    }
-}
-
-@media (min-width: 768px) {
-    .container {
-        padding: 0 168px;
-    }
 }
 
 
