@@ -2,15 +2,16 @@ import React from 'react';
 import {IconComponent, ImageComponent, Logo} from "@/components";
 import Link from "next/link";
 
+
 export function Footer() {
     //TODO fix mobile menu
     return (
         <footer className="">
             <div className="container mt-8 flex gap-4 flex-col ">
-                <div className="relative w-full h-40 xl:h-[538px] bg-[#d8f1e5] rounded-lg bg-hero object-cover
-         text-NestMartTextHeading font-bold px-2 xl:px-20 xl:flex-col 2xl:justify-center xl:items-start
+                <div className="relative w-full h-40 lg:h-[538px] bg-[#d8f1e5] rounded-lg bg-hero object-cover
+         text-NestMartTextHeading font-bold px-2 xl:px-20 xl:flex-col xl:justify-center xl:items-start
           xl:gap-8 flex items-center overflow-hidden">
-                    <p className="font-bold text-lg w-2/4 lg:mt-5 2xl:mt-0  xl:text-5xl xl:leading-[60px] z-10 ">
+                    <p className="font-bold text-lg w-2/4 lg:mt-5 xl:mt-0  lg:text-5xl lg:leading-[60px] z-10 ">
                         Stay home & get <br className="xl:hidden"/>
                         your daily <br className="xl:hidden"/>
                         needs from our shop
@@ -18,16 +19,17 @@ export function Footer() {
                     <p className="hidden xl:inline-block text-NestMartTextBody text-xl">Start You'r Daily Sopping with
                         Nest
                         Mart</p>
-                    <img className="absolute top-0 right-0 h-full object-contain z-0 xl:right-5 xl:top-4"
-                         src="/assets/images/bg-hero-main.png"
-                         alt=""/>
-                    <img className="hidden 2xl:block absolute  right-[26%]  object-contain z-0"
+                    <img
+                        className="absolute top-0 right-0 h-full object-contain z-0 lg:bottom-0 md:object-bottom md:max-w-lg 2xl:max-w-none xl:right-5 xl:top-4"
+                        src="/assets/images/bg-hero-main.png"
+                        alt=""/>
+                    <img className="hidden xl:block absolute  right-[26%]  object-contain z-0"
                          src="/assets/images/banner-hero1.png"
                          alt=""/>
-                    <img className="hidden 2xl:block absolute  right-[36%] bottom-9  object-contain z-0"
+                    <img className="hidden xl:block absolute  right-[36%] bottom-9  object-contain z-0"
                          src="/assets/images/banner-hero2.png"
                          alt=""/>
-                    <img className="hidden 2xl:block absolute bottom-0 right-[43%] object-contain z-0 "
+                    <img className="hidden xl:block absolute bottom-0 right-[43%] object-contain z-0 "
                          src="/assets/images/banner-hero3.png"
                          alt=""/>
                 </div>

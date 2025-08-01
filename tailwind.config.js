@@ -21,7 +21,7 @@ export default {
                 NestMartTextMuted: '#B6B6B6',
                 NestMartBackgroundMuted: '#F5F5F5',
             }, fontFamily: {
-                quicksand: ['Quicksand', 'sans-serif'], montserrat: ['Montserrat', 'sans-serif'],
+                montserrat: ['var(--font-montserrat)'],
             },
             container: {
                 center: true,

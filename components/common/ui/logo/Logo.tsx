@@ -5,7 +5,7 @@ import Link from "next/link";
 export function Logo({isMobile}: { isMobile: boolean }) {
     return (
         <Link href="/">
-            <div className={"flex items-center gap-1"}>
+            <div className={"flex items-center gap-1 font-montserrat"}>
                 <ImageComponent src={'/assets/images/logo.png'} alt={'logo'} width={isMobile ? 44 : 80}
                                 height={isMobile ? 44 : 80}
                                 className={"h-auto object-contain"}/>
