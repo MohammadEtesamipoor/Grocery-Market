@@ -1,4 +1,4 @@
-import {Banner, IconComponent, ImageComponent, Section} from "@/components";
+import {Banner, FeaturedCategory, IconComponent, ImageComponent, Section} from "@/components";
 
 export default function Home() {
     return (
@@ -8,7 +8,10 @@ export default function Home() {
                         image={"/assets/images/bg-hero-desktop.png"}
                         bgImage={"/assets/images/bg-design-hero-main.png"}/>
             </Section>
-
+            <Section>
+                <h2 className="text-3xl mb-5 lg:mb-11">Featured Categories</h2>
+                <FeaturedCategory/>
+            </Section>
         </div>
     );
 }
