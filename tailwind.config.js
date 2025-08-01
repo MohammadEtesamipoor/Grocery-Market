@@ -4,8 +4,8 @@ export default {
     theme: {
         extend: {
             backgroundImage: {
-                'hero': " url('/src/assets/images/bg-hero-design-mobile.png')",
-                'hero-main': " url('/src/assets/images/bg-design-hero-main.png')",
+                'hero': " url('/assets/images/bg-hero-design-mobile.png')",
+                'hero-main': " url('/assets/images/bg-design-hero-main.png')",
             },
             colors: {
                 NestMartBrand1: '#3BB77E',

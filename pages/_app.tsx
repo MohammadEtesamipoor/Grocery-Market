@@ -1,7 +1,9 @@
 import "@/styles/globals.css";
+import 'swiper/css';
+import 'swiper/css/autoplay';
 import type {AppProps} from "next/app";
 import {Layout} from "@/components";
-import {Quicksand,Montserrat} from "next/font/google";
+import {Quicksand, Montserrat} from "next/font/google";
 
 const quicksand = Quicksand({
     subsets: ["latin"]
@@ -17,8 +19,8 @@ export default function App({Component, pageProps}: AppProps) {
             <style jsx global>
                 {`
                     html {
-                        font-family: ${quicksand.style.fontFamily},sans-serif;
-                        --font-montserrat:${montserrat.style.fontFamily};
+                        font-family: ${quicksand.style.fontFamily}, sans-serif;
+                        --font-montserrat: ${montserrat.style.fontFamily};
                     }
                 `}
             </style>

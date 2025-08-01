@@ -4,13 +4,14 @@ import Image from "next/image";
 interface ImageProps {
     src: string;
     alt: string;
-    width: number;
-    height: number;
+    width?: number;
+    height?: number;
     className?: string;
+    fill?: boolean;
 }
 
-export function ImageComponent({src, alt, className, width, height}: ImageProps) {
+export function ImageComponent({src, alt, className, width, height, fill}: ImageProps) {
     return (
-        <Image className={className} src={src} alt={alt} width={width} height={height}></Image>
+        <Image src={src} alt={alt} width={width} height={height} fill={fill} className={className}></Image>
     );
 }

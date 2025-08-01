@@ -6,7 +6,7 @@ interface Props {
 
 export function FeaturedCategory({}: Props) {
     return (
-        <section className="container flex flex-col gap-11">
+        <div className="flex flex-col gap-11">
             <div id="featured-category"
                  className="grid grid-cols-3 gap-5 lg:flex lg:flex-wrap lg:justify-center 2xl:flex-nowrap 2xl:justify-between">
                 {
@@ -23,6 +23,6 @@ export function FeaturedCategory({}: Props) {
                     ))
                 }
             </div>
-        </section>
+        </div>
     );
 }
