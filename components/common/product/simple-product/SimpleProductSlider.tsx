@@ -14,7 +14,7 @@ export function SimpleProductSlider({sliderData, title}: Props) {
     return (
         <div>
             <div className="flex items-baseline justify-between container cursor-pointer pl-0">
-                <h2 className="text-3xl mb-5 lg:mb-11 font-bold">{title}</h2>
+                <h2 className="text-3xl mb-5 lg:mb-11 font-bold text-NestMartTextHeading ">{title}</h2>
                 <div className="flex items-center gap-2">
                     <div
                         className={`${title.split(" ")[1].toLowerCase()}-swiper-nav-left bg-gray-100 rounded-full p-4 hover:bg-NestMartBrand1 group`}>

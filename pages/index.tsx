@@ -1,6 +1,6 @@
 import {Banner, FeaturedCategory, IconComponent, ImageComponent, ProductBannerSlider, Section} from "@/components";
-import {SimpleProductSlider} from "@/components/common/product";
-import {productSlidesMock} from "@/mock/productMock";
+import {BestSellersSlider, SimpleProductSlider} from "@/components/common/product";
+import {OfferProductSlidesMock, productSlidesMock} from "@/mock/productMock";
 
 export default function Home() {
     return (
@@ -11,7 +11,6 @@ export default function Home() {
                         bgImage={"/assets/images/bg-design-hero-main.png"}/>
             </Section>
             <Section>
-                <h2 className="text-3xl mb-5 lg:mb-11 font-bold">Featured Categories</h2>
                 <FeaturedCategory/>
             </Section>
             <Section>
@@ -22,6 +21,9 @@ export default function Home() {
             </Section>
             <Section>
                 <SimpleProductSlider sliderData={productSlidesMock} title={"Popular Fruits"}/>
+            </Section>
+            <Section>
+                <BestSellersSlider sliderData={OfferProductSlidesMock} title={"Our-offers"}/>
             </Section>
         </div>
     );
