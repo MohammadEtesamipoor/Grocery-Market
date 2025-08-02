@@ -1,1 +1,175 @@
 @import "tailwindcss";
+
+@config '../tailwind.config.js';
+@theme {
+    --color-NestMartBrand1: #3BB77E;
+    --color-NestMartBrand2: #FDC040;
+    --color-NestMartBrandLight: #81B13D;
+    --color-NestMartTextHeading: #253D4E;
+    --color-NestMartTextBody: #7E7E7E;
+    --color-NestMartBorder1: #E5E5E5;
+    --color-NestMartBackground_grey1: #F2F3F4;
+    --color-NestMartBackground_grey2: #D7DEDB;
+    --color-NestMartDanger: #FD6E6E;
+    --color-NestMartBorder3: #BCE3C9;
+    --color-NestMartTextMuted: #B6B6B6;
+    --color-NestMartBackgroundMuted: #F5F5F5;
+
+}
+
+
+.toggl {
+    display: block;
+}
+
+
+#menu-list {
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.category-item {
+    @apply flex gap-4 items-center font-bold cursor-pointer text-NestMartTextHeading;
+    @apply md:border md:border-[#F2F3F4] md:py-2 md:px-4 md:rounded-md;
+}
+
+.category-item:hover {
+    @apply md:border-[#BCE3C9] ;
+}
+
+.featured-item {
+    @apply rounded-[10px] flex flex-col items-center pb-3.5 px-4 box-content hover:outline hover:outline-1 hover:shadow-md hover:outline-[#81B13D];
+}
+
+.featured-item img {
+    @apply max-w-20 h-auto md:max-w-32 md:min-h-32;
+}
+
+.banner-slide {
+    @apply w-full h-52 rounded-md flex flex-col items-baseline justify-center md:justify-center  md:pl-12  font-bold text-NestMartTextHeading;
+    @apply lg:min-w-xs lg:min-h-60 2xl:min-h-80 2xl:min-w-lg;
+    @apply bg-no-repeat bg-bottom-right bg-auto;
+}
+
+
+.banner-btn {
+    @apply text-white px-4 py-2 text-xs font-bold rounded-[3px] flex gap-2.5 items-center justify-center;
+}
+
+
+.product-cart {
+    @apply relative flex flex-col border-[0.5px]
+    border-[#d3ead9]  rounded-[10px] p-3
+    shadow-xs shadow-zinc-800/10
+    w-fit max-w-40 md:max-w-72 md:min-h-10 md:mb-5 md:min-w-72 gap-1 ;
+}
+
+.product-cart:hover {
+    @apply md:shadow-lg shadow-zinc-800/40;
+}
+
+.product-cart img {
+    @apply aspect-[4/3]  md:px-8 md:py-16 md:aspect-square ;
+}
+
+
+.sliceText {
+    @apply w-max overflow-ellipsis overflow-hidden max-w-[140px] line-clamp-2  md:max-w-fit md:min-h-10;
+}
+
+
+.product-slide {
+    @apply max-w-40 md:max-w-72;
+}
+
+.product-label {
+    @apply rounded-[30px] py-2.5 px-4 absolute top-0 left-0 text-white text-xs rounded-l-none mt-5;
+}
+
+.sold-bar {
+    @apply bg-NestMartBrand1 h-1 rounded-l-sm;
+}
+
+.not-sold-bar {
+    @apply bg-NestMartBorder1 h-1 rounded-r-sm;
+}
+
+.sold-products {
+    @apply flex;
+}
+
+.cart-btn {
+    @apply bg-NestMartBrand1 py-2 px-4 text-white flex items-center justify-center rounded gap-1 text-sm font-bold cursor-pointer;
+}
+.cart-btn:hover{
+    @apply bg-Nest-mart-brand2;
+}
+
+.product-cart-offer {
+    @apply flex flex-col  gap-2 rounded-[10px] px-7 py-6 shadow-lg shadow-zinc-800/10 bg-white mx-3 min-w-80 w-auto mt-2.5  ;
+}
+
+.product-cart-offer-slide {
+    @apply w-11/12  flex flex-col  items-center gap-3 px-8 ;
+}
+
+.product-cart-offer-slide > :nth-child(2) {
+    @apply md:mt-20;
+}
+
+
+.product-cart-offer-img {
+    @apply absolute -z-10 w-full h-[200px] object-center object-cover rounded-2xl  md:object-cover md:aspect-[4/3] md:h-fit ;
+}
+
+.offer-time {
+    @apply mt-11 flex;
+}
+
+.offer-time-number {
+    @apply text-3xl font-bold text-NestMartBrand1 w-[2ch];
+}
+
+.offer-time-text {
+    @apply text-sm text-NestMartTextBody -mt-1.5;
+}
+
+.list-top-products {
+    @apply flex flex-col gap-6;
+}
+
+.top-product {
+    @apply flex gap-4 md:gap-6;
+}
+
+.top-product img {
+    @apply aspect-square w-20 md:w-fit;
+}
+
+.top-product-slice-text {
+    @apply w-40 overflow-ellipsis overflow-hidden line-clamp-1 max-w-[156px] md:w-full 2xl:overflow-auto md:max-w-60 md:line-clamp-2 text-NestMartTextHeading;
+}
+
+.top-product-info {
+    @apply flex flex-col gap-1.5;
+}
+
+.contact-us {
+    @apply flex flex-col gap-5;
+}
+
+.contact-us ul {
+    @apply flex flex-col gap-5 md:gap-3.5;
+}
+
+.contact-us li {
+    @apply flex  gap-2;
+}
+
+.contact-us li svg {
+    @apply w-4 aspect-square ;
+}
+
+.contact-us li span {
+    @apply font-bold;
+}
