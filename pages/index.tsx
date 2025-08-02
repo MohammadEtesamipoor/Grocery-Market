@@ -2,9 +2,7 @@ import {
     Banner,
     DealsDaysSlider,
     FeaturedCategory,
-    IconComponent,
-    ImageComponent,
-    ProductBannerSlider,
+    ProductBannerSlider, ProductListSections,
     Section
 } from "@/components";
 import {BestSellersSlider, SimpleProductSlider} from "@/components/common/product";
@@ -36,6 +34,9 @@ export default function Home() {
             </Section>
             <Section>
                 <DealsDaysSlider sliderData={dealsDaysMock} title={"Deals Of The Days"}/>
+            </Section>
+            <Section>
+                <ProductListSections />
             </Section>
         </div>
     );

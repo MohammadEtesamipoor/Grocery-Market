@@ -147,7 +147,7 @@
 }
 
 .top-product-slice-text {
-    @apply w-40 overflow-ellipsis overflow-hidden line-clamp-1 max-w-[156px] md:w-full md:overflow-auto md:max-w-60 md:line-clamp-2;
+    @apply w-40 overflow-ellipsis overflow-hidden line-clamp-1 max-w-[156px] md:w-full 2xl:overflow-auto md:max-w-60 md:line-clamp-2 text-NestMartTextHeading;
 }
 
 .top-product-info {
