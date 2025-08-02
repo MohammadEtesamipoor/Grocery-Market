@@ -106,7 +106,7 @@
 }
 
 .product-cart-offer {
-    @apply flex flex-col  gap-2 rounded-[10px] px-7 py-6 shadow-lg shadow-zinc-800/10 w-full bg-white mx-3 min-w-80  ;
+    @apply flex flex-col  gap-2 rounded-[10px] px-7 py-6 shadow-lg shadow-zinc-800/10 bg-white mx-3 min-w-80 w-auto mt-2.5  ;
 }
 
 .product-cart-offer-slide {

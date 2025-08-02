@@ -1,6 +1,15 @@
-import {Banner, FeaturedCategory, IconComponent, ImageComponent, ProductBannerSlider, Section} from "@/components";
+import {
+    Banner,
+    DealsDaysSlider,
+    FeaturedCategory,
+    IconComponent,
+    ImageComponent,
+    ProductBannerSlider,
+    Section
+} from "@/components";
 import {BestSellersSlider, SimpleProductSlider} from "@/components/common/product";
 import {OfferProductSlidesMock, productSlidesMock} from "@/mock/productMock";
+import {dealsDaysMock} from "@/mock/dealsDaysMock";
 
 export default function Home() {
     return (
@@ -24,6 +33,9 @@ export default function Home() {
             </Section>
             <Section>
                 <BestSellersSlider sliderData={OfferProductSlidesMock} title={"Our-offers"}/>
+            </Section>
+            <Section>
+                <DealsDaysSlider sliderData={dealsDaysMock} title={"Deals Of The Days"}/>
             </Section>
         </div>
     );
