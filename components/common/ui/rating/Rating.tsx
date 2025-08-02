@@ -2,7 +2,7 @@ import React from 'react';
 import {IconComponent} from "@/components";
 
 interface StarRatingProps {
-    rating: number;
+    rating: any;
     maxStars?: number;
 }
 
