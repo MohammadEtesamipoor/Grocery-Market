@@ -57,34 +57,21 @@
 }
 
 
-.rating {
-    @apply flex gap-2;
-}
-
-.star-rating {
-    @apply h-3 w-3 flex;
-    @apply fill-[#CDCDCD];
-}
-
 .product-cart {
-    @apply relative flex flex-col border
-    border-[#BCE3C9] gap-2 rounded-[10px] p-3
-    shadow-lg shadow-zinc-800/10 md:shadow-sm
-    w-fit max-w-40 md:max-w-72 md:min-h-10;
+    @apply relative flex flex-col border-[0.5px]
+    border-[#d3ead9]  rounded-[10px] p-3
+    shadow-xs shadow-zinc-800/10
+    w-fit max-w-40 md:max-w-72 md:min-h-10 md:mb-5 ;
 }
 
 .product-cart:hover {
-    @apply md:shadow-lg;
+    @apply md:shadow-lg shadow-zinc-800/40;
 }
 
 .product-cart img {
-    @apply aspect-[4/3]  md:px-10 md:py-16 md:aspect-square ;
+    @apply aspect-[4/3]  md:px-8 md:py-16 md:aspect-square ;
 }
 
-
-.star-active {
-    @apply !fill-yellow-500 ;
-}
 
 .sliceText {
     @apply w-max overflow-ellipsis overflow-hidden max-w-[140px] line-clamp-2  md:max-w-fit md:min-h-10;
@@ -96,7 +83,7 @@
 }
 
 .product-label {
-    @apply rounded-[30px] py-2.5 px-4 absolute top-0 left-0 text-white text-xs rounded-bl-none;
+    @apply rounded-[30px] py-2.5 px-4 absolute top-0 left-0 text-white text-xs rounded-l-none mt-5;
 }
 
 .sold-bar {
