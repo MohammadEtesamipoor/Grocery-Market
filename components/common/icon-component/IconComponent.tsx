@@ -21,7 +21,6 @@ export function IconComponent({
                                   iconName,
                                   title,
                                   link,
-                                  hideTitleOnMobile,
                                   badge,
                                   titleClassName,
                                   linkClassName,

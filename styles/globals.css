@@ -18,14 +18,8 @@
 }
 
 
-.toggl {
-    display: block;
-}
 
 
-#menu-list {
-    transition: transform 0.2s ease-in-out;
-}
 
 
 .category-item {
@@ -38,7 +32,7 @@
 }
 
 .featured-item {
-    @apply rounded-[10px] flex flex-col items-center pb-3.5 px-4 box-content hover:outline hover:outline-1 hover:shadow-md hover:outline-[#81B13D];
+    @apply rounded-[10px] flex flex-col items-center pb-3.5 px-4 box-content hover:outline  hover:shadow-md hover:outline-[#81B13D];
 }
 
 .featured-item img {
@@ -78,21 +72,12 @@
 }
 
 
-.product-slide {
-    @apply max-w-40 md:max-w-72;
-}
+
 
 .product-label {
     @apply rounded-[30px] py-2.5 px-4 absolute top-0 left-0 text-white text-xs rounded-l-none mt-5;
 }
 
-.sold-bar {
-    @apply bg-NestMartBrand1 h-1 rounded-l-sm;
-}
-
-.not-sold-bar {
-    @apply bg-NestMartBorder1 h-1 rounded-r-sm;
-}
 
 .sold-products {
     @apply flex;
@@ -110,13 +95,7 @@
     @apply flex flex-col  gap-2 rounded-[10px] px-7 py-6 shadow-lg shadow-zinc-800/10 bg-white mx-3 min-w-80 w-auto mt-2.5  ;
 }
 
-.product-cart-offer-slide {
-    @apply w-11/12  flex flex-col  items-center gap-3 px-8 ;
-}
 
-.product-cart-offer-slide > :nth-child(2) {
-    @apply md:mt-20;
-}
 
 
 .product-cart-offer-img {

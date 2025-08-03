@@ -37,7 +37,7 @@ export function Menu({showMenu, setShowMenu}: Props) {
             xl:bg-white xl:static top-0 xl:w-full xl:h-full xl:visible 
              ${showMenu ? "visible" : "invisible"}
             `}
-             onClick={(event: React.MouseEvent) => {
+             onClick={() => {
                  setShowMenu(prevState => !prevState);
              }}>
             <hr/>

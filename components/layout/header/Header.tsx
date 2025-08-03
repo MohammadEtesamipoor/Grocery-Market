@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {IconComponent, ImageComponent, Logo, Menu, SearchForm} from "@/components";
+import {IconComponent, Logo, Menu, SearchForm} from "@/components";
 
 
 export function Header() {

@@ -1,4 +1,4 @@
-import {IconComponent, Rating} from "@/components";
+import {IconComponent} from "@/components";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Navigation} from "swiper/modules";
 import {SimpleProductCard} from "@/components/common/product";

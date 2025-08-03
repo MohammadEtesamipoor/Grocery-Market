@@ -1,5 +1,5 @@
 import {bannerSlidesMock} from "@/mock/productSliderBanner";
-import {IconComponent, ImageComponent} from "@/components";
+import {IconComponent} from "@/components";
 import {SwiperSlide, Swiper} from "swiper/react";
 import {Autoplay} from "swiper/modules";
 
