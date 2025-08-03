@@ -12,9 +12,7 @@ interface Props {
 }
 
 export function ProductCardList({productData}: Props) {
-    console.log(productData)
     return (
-
         <div className="top-product">
             <ImageComponent src={productData.img} alt={""} width={132} height={132} />
             <div className="top-product-info">

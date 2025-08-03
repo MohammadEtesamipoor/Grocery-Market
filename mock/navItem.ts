@@ -1,8 +1,8 @@
 export const navItems = [
     {
         type: 'icon',
-        title: "Hot Deals",
-        iconName: "flame",
+        label: "Hot Deals",
+        iconName: "icon-flame",
         width: 20,
         height: 20,
     },

@@ -13,8 +13,8 @@ export function ProductListSection({title, data}: Props) {
             </div>
             <div className="list-top-products">
                 {
-                    data.map((item) => {
-                        return <ProductCardList productData={item}/>
+                    data.map((item,index) => {
+                        return <ProductCardList key={item.id} productData={item}/>
                     })
                 }
             </div>
