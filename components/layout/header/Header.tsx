@@ -1,13 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {IconComponent, ImageComponent, Logo, Menu, SearchForm} from "@/components";
-import Link from "next/link";
+
 
 export function Header() {
+    const [showMenu, setShowMenu] = useState<boolean>(false);
+
+    const handelStateMenu = () => {
+        setShowMenu(prev => !prev);
+    }
     return (
         <header className="xl:mt-8 xl:flex xl:flex-col xl:gap-8">
             <nav className="py-4 flex justify-between items-center container xl:hidden ">
                 <Logo isMobile={true}/>
-                <div id="burger-btn" className="cursor-pointer">
+                <div onClick={handelStateMenu} id="burger-btn" className="cursor-pointer">
                     <IconComponent className={"fill-black stroke-black"} iconName={"menu"} width={26} height={26}/>
                 </div>
             </nav>
@@ -30,7 +35,7 @@ export function Header() {
                     </li>
                 </ul>
             </div>
-            <Menu/>
+            <Menu showMenu={showMenu} setShowMenu={setShowMenu}/>
         </header>
     );
 }
