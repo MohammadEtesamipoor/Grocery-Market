@@ -21,7 +21,6 @@ export function IconComponent({
                                   iconName,
                                   title,
                                   link,
-                                  hideTitleOnMobile,
                                   badge,
                                   titleClassName,
                                   linkClassName,
@@ -29,7 +28,8 @@ export function IconComponent({
     return (
         <Link href={link ?? "#"} className={"flex gap-2.5  " + linkClassName}>
             <span className={"relative h-fit"}>
-                <svg className={className} width={width} height={height} viewBox={`0 0 ${width} ${height}`}
+                <svg className={className}
+                     style={{ width: width, height: height }} viewBox={`0 0 ${width} ${height}`}
                      xmlns="http://www.w3.org/2000/svg"
                      preserveAspectRatio="xMidYMid meet">
                     <use href={`/assets/icons/sprite.svg#${iconName}`}></use>

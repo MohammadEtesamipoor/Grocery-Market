@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.84.1",
+    "@tanstack/react-query-devtools": "^5.84.1",
+    "axios": "^1.11.0",
     "next": "15.4.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-toastify": "^11.0.5",
     "swiper": "^11.2.10",
     "tailwind-merge": "^3.3.1"
   },

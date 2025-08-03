@@ -14,7 +14,7 @@ export function ProductListSection({title, data}: Props) {
             <div className="list-top-products">
                 {
                     data.map((item) => {
-                        return <ProductCardList productData={item}/>
+                        return <ProductCardList key={item.id} productData={item}/>
                     })
                 }
             </div>

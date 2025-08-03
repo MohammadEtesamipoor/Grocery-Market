@@ -3,6 +3,9 @@ export default {
     content: ["./src/**/*.{html,js,ts,jsx,tsx}", "./public/**/*.html"],
     theme: {
         extend: {
+            animation: {
+                'bounce-1': 'bounce 1s ease-in-out 1',
+            },
             backgroundImage: {
                 'hero': " url('/assets/images/bg-hero-design-mobile.png')",
                 'hero-main': " url('/assets/images/bg-design-hero-main.png')",
