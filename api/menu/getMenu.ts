@@ -1,4 +1,6 @@
-import AxiosClient from "@/api/config/AxiosClient";
+import
+
+    AxiosClient from "@/api/config/AxiosClient";
 import {Response} from "@/types/Api/Response";
 import {MenuType} from "@/types/Api/Menu";
 

@@ -2,20 +2,21 @@ import {SimpleProductCard} from "@/components/common/product";
 import {IconComponent} from "@/components";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Navigation} from "swiper/modules";
-import {bannerSlidesMock} from "@/mock/productSliderBanner";
-import {productSlidesMock} from "@/mock/productMock";
+import {ProductType} from "@/types/Api/Product";
+import {EntityDataType} from "@/types/Api/Response";
+
 
 interface Props {
     title: string;
-    sliderData: Array<any>;
+    sliderData: Array<EntityDataType<ProductType>>;
 }
 
 export function SimpleProductSlider({sliderData, title}: Props) {
     return (
         <div>
             <div className="flex items-baseline justify-between container cursor-pointer pl-0">
-                <h2 className="text-3xl mb-5 lg:mb-11 font-bold text-NestMartTextHeading ">{title}</h2>
-                <div className="flex items-center gap-2">
+                <h2 className="text-2xl lg:text-3xl mb-5 lg:mb-11 font-bold text-NestMartTextHeading ">{title}</h2>
+                <div className="items-center gap-2 hidden lg:flex">
                     <div
                         className={`${title.split(" ")[1].toLowerCase()}-swiper-nav-left bg-gray-100 rounded-full p-4 hover:bg-NestMartBrand1 group`}>
                         <IconComponent className={" rotate-180 fill-NestMartTextBody group-hover:fill-white "}
@@ -54,10 +55,10 @@ export function SimpleProductSlider({sliderData, title}: Props) {
                     }}
                 >
                     {
-                        sliderData.map((slide) => {
+                        sliderData && sliderData.map((slide: EntityDataType<ProductType>) => {
                             return (
                                 <SwiperSlide key={slide.id}>
-                                    <SimpleProductCard data={slide}/>
+                                    <SimpleProductCard data={slide.attributes}/>
                                 </SwiperSlide>
                             )
                         })
