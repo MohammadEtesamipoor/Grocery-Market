@@ -6,10 +6,18 @@ import {
     Section
 } from "@/components";
 import {BestSellersSlider, SimpleProductSlider} from "@/components/common/product";
-import {OfferProductSlidesMock, productSlidesMock} from "@/mock/productMock";
 import {dealsDaysMock} from "@/mock/dealsDaysMock";
+import {useQuery} from "@tanstack/react-query";
+import {Response} from "@/types/Api/Response";
+import {ProductType} from "@/types/Api/Product";
+import {getAllProducts} from "@/api/product/getAllProducts";
 
 export default function Home() {
+    const {data:productData}=useQuery<Response<ProductType>>({
+        queryKey:["getAllProducts"],
+        queryFn:()=>getAllProducts({populate:["categories","thumbnail"]})
+    });
+
     return (
         <div>
             <Section>
@@ -24,17 +32,17 @@ export default function Home() {
                 <ProductBannerSlider/>
             </Section>
             <Section>
-                <SimpleProductSlider sliderData={productSlidesMock} title={"Popular Products"}/>
+                {productData && <SimpleProductSlider sliderData={productData.data} title={"Popular Products"}/>}
             </Section>
-            <Section>
-                <SimpleProductSlider sliderData={productSlidesMock} title={"Popular Fruits"}/>
-            </Section>
-            <Section>
-                <BestSellersSlider sliderData={OfferProductSlidesMock} title={"Our-offers"}/>
-            </Section>
-            <Section>
-                <DealsDaysSlider sliderData={dealsDaysMock} title={"Deals Of The Days"}/>
-            </Section>
+            {/*<Section>*/}
+            {/*    <SimpleProductSlider sliderData={productSlidesMock} title={"Popular Fruits"}/>*/}
+            {/*</Section>*/}
+            {/*<Section>*/}
+            {/*    <BestSellersSlider sliderData={OfferProductSlidesMock} title={"Our-offers"}/>*/}
+            {/*</Section>*/}
+            {/*<Section>*/}
+            {/*    <DealsDaysSlider sliderData={dealsDaysMock} title={"Deals Of The Days"}/>*/}
+            {/*</Section>*/}
             <Section>
                 <ProductListSections />
             </Section>

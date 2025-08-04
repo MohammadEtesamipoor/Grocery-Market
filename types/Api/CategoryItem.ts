@@ -10,7 +10,7 @@ export interface CategoryItemType{
     color?: string
     product_count?: number
     link?: string
-    thumbnail:thumbnailType
+    thumbnail?:thumbnailType
 }
 
 export interface thumbnailType{

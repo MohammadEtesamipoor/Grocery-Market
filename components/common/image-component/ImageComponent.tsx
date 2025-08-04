@@ -2,7 +2,7 @@ import React from 'react';
 import Image from "next/image";
 
 interface ImageProps {
-    src: string;
+    src?: string | null;
     alt: string;
     width?: number;
     height?: number;
@@ -10,11 +10,11 @@ interface ImageProps {
     fill?: boolean;
 }
 
-export function ImageComponent({src, alt, className, width, height, fill}: ImageProps) {
-    const domain = src.includes("/uploads");
+export function ImageComponent({src = "", alt, className, width, height, fill}: ImageProps) {
+    const imgSrc = src ? (src.includes("/uploads") ? `https://nest.navaxcollege.com${src}` : src) : "";
     return (
         src ?
-            <Image src={domain ? `https://nest.navaxcollege.com${src}` : src} alt={"alt"} width={width} height={height}
+            <Image src={imgSrc} alt={"alt"} width={width} height={height}
                    fill={fill} className={className}></Image>
             :
             <Image src={"https://i.postimg.cc/K8NfvFpB/img-placeholder-250x250.png"} className={"object-cover"}

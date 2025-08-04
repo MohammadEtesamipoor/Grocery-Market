@@ -12,7 +12,7 @@ export function FeaturedCategory() {
     });
     return (
         <>
-            <h2 className="text-3xl mb-5 lg:mb-11 font-bold text-NestMartTextHeading">Featured Categories</h2>
+            <h2 className="text-2xl lg:text-3xl mb-5 lg:mb-11 font-bold text-NestMartTextHeading">Featured Categories</h2>
             <div className="flex flex-col gap-11">
                 <div id="featured-category"
                      className="grid grid-cols-3 gap-5 lg:flex lg:flex-wrap lg:justify-center 2xl:flex-nowrap 2xl:justify-between">
@@ -20,16 +20,16 @@ export function FeaturedCategory() {
                         featureCategory?.data.map((itemCategory: EntityDataType<CategoryItemType>) => (
                             <div
                                 style={{
-                                    backgroundColor: itemCategory.attributes.thumbnail.data?.attributes.url ? itemCategory.attributes.color : "white",
+                                    backgroundColor: itemCategory.attributes.thumbnail?.data?.attributes.url ? itemCategory.attributes.color : "white",
                                     border: "1px solid #d3d3d3",
                                 }}
                                 key={itemCategory.id} className="featured-item">
-                                <ImageComponent src={(itemCategory.attributes.thumbnail.data?.attributes.url ?? "")}
+                                <ImageComponent src={(itemCategory.attributes.thumbnail?.data?.attributes.url ?? "")}
                                                 alt={itemCategory.attributes.title}
                                                 width={110} height={84} className={'object-none'}
                                 />
-                                <p className="font-bold text-xs text-NestMartTextHeading">{itemCategory.attributes.title}</p>
-                                <p className="text-xs text-NestMartTextMuted">{itemCategory.attributes.product_count}</p>
+                                <p className="font-bold text-xs text-NestMartTextHeading ">{itemCategory.attributes.title}</p>
+                                <p className="text-xs text-NestMartTextMuted ">{itemCategory.attributes.product_count}</p>
                             </div>
                         ))
                     }

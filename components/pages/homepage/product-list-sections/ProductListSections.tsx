@@ -13,7 +13,7 @@ export function ProductListSections({}: Props) {
                 spaceBetween={50}
                 slidesPerView={1}
                 breakpoints={{
-                    370: {
+                    760: {
                         slidesPerView: 2,
                     },
                     1024: {
