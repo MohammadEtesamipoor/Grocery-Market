@@ -27,7 +27,7 @@ export function SimpleProductCard({data}: Props) {
                             <p className="text-xs text-NestMartTextBody">{data.weight} {data.unit}</p>
                         </div>
                         <div className="flex justify-between w-full items-center gap-4">
-                            <div className="flex flex-col lg:flex-row  lg:gap-1.5 font-bold items-end">
+                            <div className="flex flex-row gap-0.5  lg:gap-1.5 font-bold items-end">
                                 <p className="text-NestMartBrand1 text-sm md:text-xl">$ {data.price}</p>
                                 <p className="text-NestMartTextBody text-xs line-through ">{data.sell_price ? `$ ${data.sell_price}` : ""}</p>
                             </div>

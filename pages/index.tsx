@@ -11,6 +11,7 @@ import {useQuery} from "@tanstack/react-query";
 import {Response} from "@/types/Api/Response";
 import {ProductType} from "@/types/Api/Product";
 import {getAllProducts} from "@/api/product/getAllProducts";
+import {OfferProductSlidesMock} from "@/mock/productMock";
 
 export default function Home() {
     const {data: popularProductData} = useQuery<Response<ProductType>>({
@@ -20,6 +21,10 @@ export default function Home() {
     const {data: fruitProductData} = useQuery<Response<ProductType>>({
         queryKey: ["getAllProducts", "fruitProductData"],
         queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filter: "is_popular_fruit"})
+    });
+    const {data: bestSellerProductData} = useQuery<Response<ProductType>>({
+        queryKey: ["getAllProducts", "bestSellerProductData"],
+        queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filter: "is_best_seller"})
     });
 
     return (
@@ -42,9 +47,10 @@ export default function Home() {
             <Section>
                 {fruitProductData && <SimpleProductSlider sliderData={fruitProductData.data} title={"Popular Fruits"}/>}
             </Section>
-            {/*<Section>*/}
-            {/*    <BestSellersSlider sliderData={OfferProductSlidesMock} title={"Our-offers"}/>*/}
-            {/*</Section>*/}
+            <Section>
+                {bestSellerProductData &&
+                    <BestSellersSlider sliderData={bestSellerProductData.data} title={"Our-offers"}/>}
+            </Section>
             {/*<Section>*/}
             {/*    <DealsDaysSlider sliderData={dealsDaysMock} title={"Deals Of The Days"}/>*/}
             {/*</Section>*/}

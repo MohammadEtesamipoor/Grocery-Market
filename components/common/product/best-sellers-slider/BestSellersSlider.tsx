@@ -2,20 +2,23 @@ import {IconComponent} from "@/components";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Navigation} from "swiper/modules";
 import {SimpleProductCard} from "@/components/common/product";
+import {EntityDataType} from "@/types/Api/Response";
+import {ProductType} from "@/types/Api/Product";
 
 interface Props {
     title: string;
-    sliderData: Array<any>;
+    sliderData: Array<EntityDataType<ProductType>>;
 }
 
 export function BestSellersSlider({sliderData, title}: Props) {
+    console.log(sliderData);
     return (
         <div>
 
             <h2 className="text-3xl mb-5 lg:mb-11 font-bold text-NestMartTextHeading ">{title}</h2>
-            <div className="flex gap-6 w-full">
+            <div className="flex gap-5 2xl:gap-6 w-full">
                 <div
-                    className="relative bg-[#3BB77E] rounded-3xl  bg-right-bottom bg-no-repeat bg-cover hidden xl:block"
+                    className="relative bg-[#3BB77E] rounded-3xl  bg-right-bottom bg-no-repeat bg-cover hidden xl:block lg:max-w-72 2xl:max-w-96"
                     style={{backgroundImage: `url(/assets/images/bg-banner-off.png)`}}
                 >
                     <div className=" flex flex-col items-start justify-between w-full h-full py-6 px-11">
@@ -38,8 +41,7 @@ export function BestSellersSlider({sliderData, title}: Props) {
                             slidesPerView: 3,
                         },
                         1632: {
-                            slidesPerView: 4,
-                            initialSlide: 1
+                            slidesPerView: 3,
                         },
                     }}
                 >
@@ -47,7 +49,7 @@ export function BestSellersSlider({sliderData, title}: Props) {
                         sliderData.map((slide) => {
                             return (
                                 <SwiperSlide key={slide.id}>
-                                    <SimpleProductCard data={slide}/>
+                                    <SimpleProductCard data={slide.attributes}/>
                                 </SwiperSlide>
                             )
                         })

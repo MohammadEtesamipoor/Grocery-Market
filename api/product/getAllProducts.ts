@@ -4,7 +4,7 @@ import {ProductType} from "@/types/Api/Product";
 
 interface Proms {
     populate: Array<"thumbnail" | "categories" | "gallery">;
-    filter: "is_popular" | "is_popular_fruit" | "is_top_selling" | "is_trending"
+    filter: "is_popular" | "is_popular_fruit" | "is_top_selling" | "is_trending" | "is_best_seller"
 }
 
 export const getAllProducts = async ({populate, filter}: Proms): Promise<Response<ProductType>> => {
