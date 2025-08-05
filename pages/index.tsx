@@ -13,9 +13,13 @@ import {ProductType} from "@/types/Api/Product";
 import {getAllProducts} from "@/api/product/getAllProducts";
 
 export default function Home() {
-    const {data:productData}=useQuery<Response<ProductType>>({
-        queryKey:["getAllProducts"],
-        queryFn:()=>getAllProducts({populate:["categories","thumbnail"]})
+    const {data: popularProductData} = useQuery<Response<ProductType>>({
+        queryKey: ["getAllProducts", "popularProductData"],
+        queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filter: "is_popular"})
+    });
+    const {data: fruitProductData} = useQuery<Response<ProductType>>({
+        queryKey: ["getAllProducts", "fruitProductData"],
+        queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filter: "is_popular_fruit"})
     });
 
     return (
@@ -32,11 +36,12 @@ export default function Home() {
                 <ProductBannerSlider/>
             </Section>
             <Section>
-                {productData && <SimpleProductSlider sliderData={productData.data} title={"Popular Products"}/>}
+                {popularProductData &&
+                    <SimpleProductSlider sliderData={popularProductData.data} title={"Popular Products"}/>}
             </Section>
-            {/*<Section>*/}
-            {/*    <SimpleProductSlider sliderData={productSlidesMock} title={"Popular Fruits"}/>*/}
-            {/*</Section>*/}
+            <Section>
+                {fruitProductData && <SimpleProductSlider sliderData={fruitProductData.data} title={"Popular Fruits"}/>}
+            </Section>
             {/*<Section>*/}
             {/*    <BestSellersSlider sliderData={OfferProductSlidesMock} title={"Our-offers"}/>*/}
             {/*</Section>*/}
@@ -44,7 +49,7 @@ export default function Home() {
             {/*    <DealsDaysSlider sliderData={dealsDaysMock} title={"Deals Of The Days"}/>*/}
             {/*</Section>*/}
             <Section>
-                <ProductListSections />
+                <ProductListSections/>
             </Section>
         </div>
     );
