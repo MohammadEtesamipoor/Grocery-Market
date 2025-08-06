@@ -1,11 +1,11 @@
-import {featuredCategoriesMock} from "@/mock/featuredCategory";
+
 import {useQuery} from "@tanstack/react-query";
 import {getFeatureCategory} from "@/api/category/getFeatureCategory";
 import {EntityDataType, Response} from "@/types/Api/Response";
 import {CategoryItemType} from "@/types/Api/CategoryItem";
 import {ImageComponent} from "@/components";
 
-export function FeaturedCategory() {
+export default function FeatureCategory() {
     const {data: featureCategory} = useQuery<Response<CategoryItemType>>({
         queryKey: ["getFeatureCategory"],
         queryFn: () => getFeatureCategory()
@@ -17,6 +17,7 @@ export function FeaturedCategory() {
                 <div id="featured-category"
                      className="grid grid-cols-3 gap-5 lg:flex lg:flex-wrap lg:justify-center 2xl:flex-nowrap 2xl:justify-between">
                     {
+                        featureCategory &&
                         featureCategory?.data.map((itemCategory: EntityDataType<CategoryItemType>) => (
                             <div
                                 style={{
@@ -26,27 +27,13 @@ export function FeaturedCategory() {
                                 key={itemCategory.id} className="featured-item">
                                 <ImageComponent src={(itemCategory.attributes.thumbnail?.data?.attributes.url ?? "")}
                                                 alt={itemCategory.attributes.title}
-                                                width={110} height={84} className={'object-none'}
-                                />
+                                                width={110} height={84} className={'object-none'}/>
                                 <p className="font-bold text-xs text-NestMartTextHeading ">{itemCategory.attributes.title}</p>
                                 <p className="text-xs text-NestMartTextMuted ">{itemCategory.attributes.product_count}</p>
                             </div>
                         ))
                     }
-                    {/*Use Mock Api*/}
-                    {/* {*/}
-                    {/*    featuredCategoriesMock.map((featuredCategory) => (*/}
-                    {/*        <div*/}
-                    {/*            style={{*/}
-                    {/*                backgroundColor: featuredCategory.lightColor,*/}
-                    {/*            }}*/}
-                    {/*            key={featuredCategory.id} className="featured-item">*/}
-                    {/*            <img src={featuredCategory.imgSrc} alt={featuredCategory.alt}/>*/}
-                    {/*            <p className="font-bold text-xs text-NestMartTextHeading">{featuredCategory.title}</p>*/}
-                    {/*            <p className="text-xs text-NestMartTextMuted">{featuredCategory.itemCount}</p>*/}
-                    {/*        </div>*/}
-                    {/*    ))*/}
-                    {/*}*/}
+
                 </div>
             </div>
         </>

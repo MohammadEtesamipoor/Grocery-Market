@@ -17,6 +17,15 @@
 
 }
 
+.no-arrow-btn ::-webkit-outer-spin-button,
+.no-arrow-btn ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.no-arrow-btn {
+    -moz-appearance: textfield;
+}
 
 .category-item {
     @apply flex gap-4 items-center font-bold cursor-pointer text-NestMartTextHeading;
