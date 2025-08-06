@@ -1,7 +1,7 @@
 import {Badge, IconComponent, ImageComponent, Rating, SoldBarProduct} from "@/components";
 import Link from "next/link";
 import {ProductType} from "@/types/Api/Product";
-import {ChangeEvent, ChangeEventHandler, useState} from "react";
+import {ChangeEvent, useState} from "react";
 
 interface Props {
     data: ProductType;
@@ -10,7 +10,6 @@ interface Props {
 
 export function SimpleProductCard({data}: Props) {
     const [productCount, setProductCount] = useState<any>('');
-    const [inputValue, setInputValue] = useState<string>('');
 
     const handelInputValue = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;

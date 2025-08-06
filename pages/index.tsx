@@ -1,6 +1,5 @@
 import {
     Banner,
-    DealsDaysSlider,
     ProductBannerSlider, ProductListSections,
     Section
 } from "@/components";
@@ -10,9 +9,7 @@ import {useQuery} from "@tanstack/react-query";
 import {Response} from "@/types/Api/Response";
 import {ProductType} from "@/types/Api/Product";
 import {getAllProducts} from "@/api/product/getAllProducts";
-import {OfferProductSlidesMock} from "@/mock/productMock";
-import FeatureCategory from "@/components/pages/homepage/feature-catagory/FeatureCategory";
-
+import FeatureCategory from "@/components/pages/homepage/feature-catagory/FeaturedCategory";
 
 export default function Home() {
     const {data: popularProductData} = useQuery<Response<ProductType>>({
