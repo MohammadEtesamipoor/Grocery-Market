@@ -1,7 +1,6 @@
 import {
     Banner,
     DealsDaysSlider,
-    FeaturedCategory,
     ProductBannerSlider, ProductListSections,
     Section
 } from "@/components";
@@ -12,6 +11,8 @@ import {Response} from "@/types/Api/Response";
 import {ProductType} from "@/types/Api/Product";
 import {getAllProducts} from "@/api/product/getAllProducts";
 import {OfferProductSlidesMock} from "@/mock/productMock";
+import FeatureCategory from "@/components/pages/homepage/feature-catagory/FeatureCategory";
+
 
 export default function Home() {
     const {data: popularProductData} = useQuery<Response<ProductType>>({
@@ -35,7 +36,7 @@ export default function Home() {
                         bgImage={"/assets/images/bg-design-hero-main.png"}/>
             </Section>
             <Section>
-                <FeaturedCategory/>
+                <FeatureCategory/>
             </Section>
             <Section>
                 <ProductBannerSlider/>

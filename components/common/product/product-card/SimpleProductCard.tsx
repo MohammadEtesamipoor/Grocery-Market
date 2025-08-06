@@ -1,6 +1,7 @@
 import {Badge, IconComponent, ImageComponent, Rating, SoldBarProduct} from "@/components";
 import Link from "next/link";
 import {ProductType} from "@/types/Api/Product";
+import {ChangeEvent, ChangeEventHandler, useState} from "react";
 
 interface Props {
     data: ProductType;
@@ -8,6 +9,25 @@ interface Props {
 
 
 export function SimpleProductCard({data}: Props) {
+    const [productCount, setProductCount] = useState<any>('');
+    const [inputValue, setInputValue] = useState<string>('');
+
+    const handelInputValue = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        if (/^[0-9]+$/.test(value)) {
+            setProductCount(value);
+        }
+    }
+    const handelClickValue = () => {
+        if (productCount == 0) {
+            setProductCount("");
+
+        } else if (!Number(productCount))
+            setProductCount(1)
+
+        if (productCount == "") setProductCount(1)
+
+    }
     return (
         <div className={"w-40 md:w-72 mb-1.5 lg:mb-0"}>
             <div className="product-cart">
@@ -33,10 +53,16 @@ export function SimpleProductCard({data}: Props) {
                             </div>
                             {!data.sold &&
                                 <input
-                                    className="count-product flex items-center justify-center text-center w-6 h-6 text-NestMartBrand1 bg-[#DEF9EC] rounded-[4px] max-w-fit cursor-pointer"
-                                    type="text"
+                                    className={`count-product flex items-center justify-center text-center lg:w-16 w-6 h-6 text-NestMartTextHeading bg-[#DEF9EC] rounded-[4px] max-w-fit cursor-pointer
+                                    ${productCount ? "" : "no-arrow-btn"}
+                                    
+                                    `}
+                                    type="number"
                                     name="count-product"
-                                    placeholder="+"/>}
+                                    value={productCount}
+                                    onChange={(e: ChangeEvent<HTMLInputElement>) => handelInputValue(e)}
+                                    onClick={handelClickValue}
+                                    placeholder="Add +"/>}
                         </div>
                         {
                             data.sold && <>
