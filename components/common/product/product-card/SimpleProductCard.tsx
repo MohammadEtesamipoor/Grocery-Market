@@ -2,6 +2,7 @@ import {Badge, IconComponent, ImageComponent, Rating, SoldBarProduct} from "@/co
 import Link from "next/link";
 import {ProductType} from "@/types/Api/Product";
 import {ChangeEvent, useState} from "react";
+import useProductCount from "@/hooks/use-product-count";
 
 interface Props {
     data: ProductType;
@@ -9,24 +10,7 @@ interface Props {
 
 
 export function SimpleProductCard({data}: Props) {
-    const [productCount, setProductCount] = useState<any>('');
-
-    const handelInputValue = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-        if (/^[0-9]+$/.test(value)) {
-            setProductCount(value);
-        }
-    }
-    const handelClickValue = () => {
-        if (productCount == 0) {
-            setProductCount("");
-
-        } else if (!Number(productCount))
-            setProductCount(1)
-
-        if (productCount == "") setProductCount(1)
-
-    }
+    const { productCount, handelInputValue, handelClickValue } = useProductCount();
     return (
         <div className={"w-40 md:w-72 mb-1.5 lg:mb-0"}>
             <div className="product-cart">

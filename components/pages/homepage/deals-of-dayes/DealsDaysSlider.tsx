@@ -9,6 +9,7 @@ interface Props {
 }
 
 export function DealsDaysSlider({sliderData, title}: Props) {
+
     return (
         <div>
             <h2 className="text-3xl mb-5 lg:mb-11 font-bold text-NestMartTextHeading ">{title}</h2>

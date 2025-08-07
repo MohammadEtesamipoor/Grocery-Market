@@ -2,6 +2,8 @@ import {ImageComponent, Rating} from "@/components";
 
 import {ProductType} from "@/types/Api/Product";
 import useTimer from "@/hooks/use-timer";
+import {ChangeEvent} from "react";
+import useProductCount from "@/hooks/use-product-count";
 
 // interface Props {
 //     data: {
@@ -22,7 +24,7 @@ interface Props {
 
 export function DealsProductCard({data}: Props) {
     const { days, hours, minutes, seconds } = useTimer(data.discount_expire_date);
-
+    const { productCount, handelInputValue, handelClickValue } = useProductCount();
     return (
         <>
             <ImageComponent className={"product-cart-offer-img object-center"} src={data.thumbnail?.data?.attributes.url} alt={data.title}
@@ -62,11 +64,18 @@ export function DealsProductCard({data}: Props) {
                         <p className="text-NestMartBrand1 text-xl font-bold">${data.price}</p>
                         <p className="text-NestMartTextBody text-xs line-through ">${data.sell_price}</p>
                     </div>
-                    <input
-                        className="count-product flex items-center justify-center text-center w-16 h-6 font-bold text-sm placeholder-NestMartBrand1 text-NestMartBrand1 bg-[#DEF9EC] rounded-[4px]  cursor-pointer"
-                        type="text"
-                        name="count-product"
-                        placeholder="Add +"/>
+                    {!data.sold &&
+                        <input
+                            className={`count-product flex items-center justify-center text-center lg:w-16 w-6 h-6 text-NestMartTextHeading bg-[#DEF9EC] rounded-[4px] max-w-fit cursor-pointer
+                                    ${productCount ? "" : "no-arrow-btn"}
+                                    
+                                    `}
+                            type="number"
+                            name="count-product"
+                            value={productCount}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => handelInputValue(e)}
+                            onClick={handelClickValue}
+                            placeholder="Add +"/>}
                 </div>
             </div>
         </>
