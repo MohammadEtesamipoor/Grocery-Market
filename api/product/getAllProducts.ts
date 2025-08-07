@@ -3,24 +3,18 @@ import {Response} from "@/types/Api/Response";
 import {ProductType} from "@/types/Api/Product";
 
 interface Proms {
-    populate: Array<"thumbnail" | "categories" | "gallery">;
-    filter: "is_popular" | "is_popular_fruit" | "is_top_selling" | "is_trending" | "is_best_seller"
+    populate?: Array<"thumbnail" | "categories" | "gallery">;
+    filters?: {}
 }
 
-export const getAllProducts = async ({populate, filter}: Proms): Promise<Response<ProductType>> => {
-    console.log()
+export const getAllProducts = async ({populate, filters}: Proms): Promise<Response<ProductType>> => {
     const response = await AxiosClient.get(`/products`, {
         params: {
             populate: `${populate?.join(',')}`,
-            ...(filter && {
-                filters: {
-                    [filter]: {
-                        $eq: true
-                    }
-                }
-            })
+            filters:filters,
         }
     })
+    console.log(response.data)
     return response.data;
 }
 

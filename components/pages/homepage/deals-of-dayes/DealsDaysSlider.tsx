@@ -1,12 +1,15 @@
 import {Swiper, SwiperSlide} from "swiper/react";
 import {DealsProductCard} from "@/components/common/product";
+import {EntityDataType} from "@/types/Api/Response";
+import {ProductType} from "@/types/Api/Product";
 
 interface Props {
     title: string;
-    sliderData: Array<any>;
+    sliderData:  Array<EntityDataType<ProductType>>;
 }
 
 export function DealsDaysSlider({sliderData, title}: Props) {
+
     return (
         <div>
             <h2 className="text-3xl mb-5 lg:mb-11 font-bold text-NestMartTextHeading ">{title}</h2>
@@ -22,15 +25,14 @@ export function DealsDaysSlider({sliderData, title}: Props) {
                     },
                     1920: {
                         slidesPerView: 4,
-                        initialSlide: 1
                     },
                 }}
             >
 
                 {
-                    sliderData.map((item) => (
+                    sliderData.map((item:EntityDataType<ProductType>) => (
                         <SwiperSlide key={item.id} className={"mb-5"}>
-                            <DealsProductCard data={item}/>
+                            <DealsProductCard data={item.attributes}/>
                         </SwiperSlide>
                     ))
                 }

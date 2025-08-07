@@ -1,5 +1,5 @@
 import {
-    Banner,
+    Banner, DealsDaysSlider,
     ProductBannerSlider, ProductListSections,
     Section
 } from "@/components";
@@ -14,17 +14,21 @@ import FeatureCategory from "@/components/pages/homepage/feature-catagory/Featur
 export default function Home() {
     const {data: popularProductData} = useQuery<Response<ProductType>>({
         queryKey: ["getAllProducts", "popularProductData"],
-        queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filter: "is_popular"})
+        queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filters: {is_popular:{$eq:true}}})
     });
     const {data: fruitProductData} = useQuery<Response<ProductType>>({
         queryKey: ["getAllProducts", "fruitProductData"],
-        queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filter: "is_popular_fruit"})
+        queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filters: {is_popular_fruit:{$eq:true}}})
     });
     const {data: bestSellerProductData} = useQuery<Response<ProductType>>({
         queryKey: ["getAllProducts", "bestSellerProductData"],
-        queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filter: "is_best_seller"})
+        queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filters: {is_best_seller:{$eq:true}}})
     });
 
+    const {data: dealsOfDayData} = useQuery<Response<ProductType>>({
+        queryKey: ["getAllProducts", "dealsOfDayData"],
+        queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filters: {discount_expire_date:{$notNull:true}}})
+    });
     return (
         <div>
             <Section>
@@ -49,9 +53,9 @@ export default function Home() {
                 {bestSellerProductData &&
                     <BestSellersSlider sliderData={bestSellerProductData.data} title={"Our-offers"}/>}
             </Section>
-            {/*<Section>*/}
-            {/*    <DealsDaysSlider sliderData={dealsDaysMock} title={"Deals Of The Days"}/>*/}
-            {/*</Section>*/}
+            <Section>
+                { dealsOfDayData && <DealsDaysSlider sliderData={dealsOfDayData.data} title={"Deals Of The Days"}/>}
+            </Section>
             <Section>
                 <ProductListSections/>
             </Section>
