@@ -11,7 +11,6 @@ interface Props {
 }
 
 export function BestSellersSlider({sliderData, title}: Props) {
-    console.log(sliderData);
     return (
         <div>
 

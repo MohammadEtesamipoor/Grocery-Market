@@ -17,7 +17,8 @@ export function ImageComponent({src = "", alt, className, width, height, fill}: 
             <Image src={imgSrc} alt={"alt"} width={width} height={height}
                    fill={fill} className={className}></Image>
             :
-            <Image src={"https://i.postimg.cc/K8NfvFpB/img-placeholder-250x250.png"} className={"object-cover"}
+            <Image src={"https://i.postimg.cc/K8NfvFpB/img-placeholder-250x250.png"}
+                   className={`${className} !object-none`}
                    alt={alt} width={width} height={height}/>
     );
 }
