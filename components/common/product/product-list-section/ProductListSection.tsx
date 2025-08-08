@@ -1,11 +1,14 @@
 import {ProductCardList} from "@/components/common/product";
+import {EntityDataType} from "@/types/Api/Response";
+import {ProductType} from "@/types/Api/Product";
 
 interface Props {
     title: string;
-    data: Array<any>;
+    data: Array<EntityDataType<ProductType>>;
 }
 
 export function ProductListSection({title, data}: Props) {
+    console.log(data)
     return (
         <div className={"w-fit"}>
             <div className="mb-5 xl:mb-10">
@@ -13,8 +16,8 @@ export function ProductListSection({title, data}: Props) {
             </div>
             <div className="list-top-products">
                 {
-                    data.map((item) => {
-                        return <ProductCardList key={item.id} productData={item}/>
+                    data.map((item:EntityDataType<ProductType>) => {
+                        return <ProductCardList key={item.id} data={item.attributes}/>
                     })
                 }
             </div>

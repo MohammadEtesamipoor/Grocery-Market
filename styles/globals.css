@@ -104,7 +104,7 @@
 }
 
 .offer-time {
-    @apply mt-11 flex;
+    @apply mt-11 flex bg-white rounded-md px-3 py-2 flex flex-col justify-center text-center;
 }
 
 .offer-time-number {
@@ -123,9 +123,7 @@
     @apply flex gap-4 md:gap-6;
 }
 
-.top-product img {
-    @apply aspect-square w-20 md:w-fit;
-}
+
 
 .top-product-slice-text {
     @apply w-40 overflow-ellipsis overflow-hidden line-clamp-1 max-w-[156px] md:w-full 2xl:overflow-auto md:max-w-60 md:line-clamp-2 text-NestMartTextHeading;
