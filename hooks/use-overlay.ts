@@ -11,5 +11,5 @@ export function useOverlay({onClick}: Props) {
         }
         document.addEventListener('click', clickHandler);
         return () => document.removeEventListener('click', clickHandler);
-    })
+    },[])
 }

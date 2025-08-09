@@ -24,6 +24,7 @@
 }
 
 .no-arrow-btn {
+    appearance: textfield;
     -moz-appearance: textfield;
 }
 

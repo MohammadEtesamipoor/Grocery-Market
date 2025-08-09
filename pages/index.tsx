@@ -5,16 +5,18 @@ import {
 } from "@/components";
 import {BestSellersSlider, SimpleProductSlider} from "@/components/common/product";
 import {dealsDaysMock} from "@/mock/dealsDaysMock";
-import {useQuery} from "@tanstack/react-query";
+import {dehydrate, QueryClient, useQuery} from "@tanstack/react-query";
 import {Response} from "@/types/Api/Response";
 import {ProductType} from "@/types/Api/Product";
 import {getAllProducts} from "@/api/product/getAllProducts";
 import FeatureCategory from "@/components/pages/homepage/feature-catagory/FeaturedCategory";
+import {getMenu} from "@/api/menu/getMenu";
+import {getFeatureCategory} from "@/api/category/getFeatureCategory";
 
 export default function Home() {
     const {data: popularProductData} = useQuery<Response<ProductType>>({
         queryKey: ["getAllProducts", "popularProductData"],
-        queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filters: {is_popular:{$eq:true}}})
+        queryFn: () =>getAllProducts({populate: ["categories", "thumbnail"], filters: {is_popular:{$eq:true}}})
     });
     const {data: fruitProductData} = useQuery<Response<ProductType>>({
         queryKey: ["getAllProducts", "fruitProductData"],
@@ -61,4 +63,99 @@ export default function Home() {
             </Section>
         </div>
     );
+}
+
+
+export async function getServerSideProps(context) {
+    const queryClient = new QueryClient()
+
+    await queryClient.prefetchQuery({
+        queryKey: ["getMenu"],
+        queryFn: getMenu
+    })
+
+    await queryClient.prefetchQuery({
+        queryKey: ["getFeatureCategory"],
+        queryFn: () => getFeatureCategory()
+    })
+
+    await queryClient.prefetchQuery({
+        queryKey: ["getAllProducts", "dealsOfDayData"],
+        queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filters: {discount_expire_date:{$notNull:true}}})
+    })
+
+    await queryClient.prefetchQuery({
+        queryKey: ["getAllProducts", "bestSellerProductData"],
+        queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filters: {is_best_seller:{$eq:true}}})
+    })
+
+    await queryClient.prefetchQuery({
+        queryKey: ["getAllProducts", "fruitProductData"],
+        queryFn: () => getAllProducts({populate: ["categories", "thumbnail"], filters: {is_popular_fruit:{$eq:true}}})
+    })
+
+    await queryClient.prefetchQuery({
+        queryKey: ["getAllProducts", "popularProductData"],
+        queryFn: () =>getAllProducts({populate: ["categories", "thumbnail"], filters: {is_popular:{$eq:true}}})
+    })
+
+
+    await queryClient.prefetchQuery({
+        queryKey: ["getAllProducts", "RecentlyAddedData"],
+        queryFn: () => getAllProducts(
+            {
+                populate: ["categories", "thumbnail"],
+                filters: {is_popular:{$eq:true}},
+                pagination:{
+                    page:1,
+                    pageSize:3,
+                }
+            }),
+    })
+
+    await queryClient.prefetchQuery({
+        queryKey: ["getAllProducts", "TopSellingData"],
+        queryFn: () => getAllProducts(
+            {
+                populate: ["categories", "thumbnail"],
+                filters: {is_top_selling:{$eq:true}},
+                pagination:{
+                    page:1,
+                    pageSize:3,
+                }
+            }),
+    })
+
+    await queryClient.prefetchQuery({
+        queryKey: ["getAllProducts", "TrendingProductsData"],
+        queryFn: () => getAllProducts(
+            {
+                populate: ["categories", "thumbnail"],
+                filters: {is_trending:{$eq:true}},
+                pagination:{
+                    page:1,
+                    pageSize:3,
+                }
+            }),
+    })
+
+    await queryClient.prefetchQuery({
+        queryKey: ["getAllProducts", "TopRatedData"],
+        queryFn: () => getAllProducts(
+            {
+                populate: ["categories", "thumbnail"],
+                sort:["rate:desc"],
+                pagination:{
+                    page:1,
+                    pageSize:3,
+                    withCount:false
+                }
+            }),
+    })
+
+    return {
+        props: {
+            dehydratedState: dehydrate(queryClient),
+        },
+    }
 }
