@@ -28,24 +28,25 @@ export function DealsProductCard({data}: Props) {
     return (
         <>
             <ImageComponent className={"product-cart-offer-img object-center"} src={data.thumbnail?.data?.attributes.url} alt={data.title}
+                            classNamePlaceHolder={"absolute -z-10  h-36 lg:h-40 object-center object-contain"}
                             width={378} height={335}/>
             <div className=" flex gap-6 justify-center lg:mt-28 ">
-                <div className="offer-time bg-white rounded-md px-3 py-2 flex flex-col justify-center"
+                <div className="offer-time "
                      data-offer-time="2" data-type="day">
                     <p className="offer-time-number">{days}</p>
                     <span className="offer-time-text ">Days</span>
                 </div>
-                <div className="offer-time bg-white rounded-md px-3 py-2 flex flex-col justify-center "
+                <div className="offer-time"
                      data-type="hour">
                     <p className="offer-time-number">{hours}</p>
                     <span className="offer-time-text ">Hours</span>
                 </div>
-                <div className="offer-time bg-white rounded-md px-3 py-2 flex flex-col justify-center"
+                <div className="offer-time "
                      data-type="min">
                     <p className="offer-time-number">{minutes}</p>
                     <span className="offer-time-text ">Mins</span>
                 </div>
-                <div className="offer-time bg-white rounded-md px-3 py-2 flex flex-col justify-center"
+                <div className="offer-time "
                      data-type="sec">
                     <p className="offer-time-number">{seconds}</p>
                     <span className="offer-time-text ">Sec</span>

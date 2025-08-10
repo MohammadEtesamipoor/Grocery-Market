@@ -29,6 +29,7 @@ export function BestSellersSlider({sliderData, title}: Props) {
                     </div>
                 </div>
                 <Swiper
+                    className={"grow"}
                     spaceBetween={20}
                     slidesPerView={1}
                     modules={[Autoplay, Navigation]}

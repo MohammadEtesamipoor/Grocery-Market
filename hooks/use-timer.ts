@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function useTimer(discountExpireDate) {
+function useTimer(discountExpireDate:string|undefined) {
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
@@ -9,7 +9,7 @@ function useTimer(discountExpireDate) {
     });
 
     useEffect(() => {
-        const originalDate = new Date(discountExpireDate);
+        const originalDate = new Date(discountExpireDate!);
 
 
         const extendedDate = new Date(originalDate);

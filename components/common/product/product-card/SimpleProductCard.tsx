@@ -1,7 +1,7 @@
 import {Badge, IconComponent, ImageComponent, Rating, SoldBarProduct} from "@/components";
 import Link from "next/link";
 import {ProductType} from "@/types/Api/Product";
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent} from "react";
 import useProductCount from "@/hooks/use-product-count";
 
 interface Props {
