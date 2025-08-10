@@ -105,7 +105,7 @@
 }
 
 .offer-time {
-    @apply mt-11 flex bg-white rounded-md px-3 py-2 flex flex-col justify-center text-center;
+    @apply mt-11 flex bg-white rounded-md px-3 py-2 flex-col justify-center text-center;
 }
 
 .offer-time-number {

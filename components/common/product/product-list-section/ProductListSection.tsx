@@ -8,7 +8,6 @@ interface Props {
 }
 
 export function ProductListSection({title, data}: Props) {
-    console.log(data)
     return (
         <div className={"w-fit"}>
             <div className="mb-5 xl:mb-10">
