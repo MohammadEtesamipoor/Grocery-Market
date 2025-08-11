@@ -5,6 +5,8 @@ import {useMutation} from "@tanstack/react-query";
 import {getAllProducts} from "@/api/product/getAllProducts";
 import {EntityDataType} from "@/types/Api/Response";
 import {ProductType} from "@/types/Api/Product";
+import {useOverlay} from "@/hooks/use-overlay";
+import useDebounce from "@/hooks/use-debounce";
 interface InputSearch {
     search: string;
 }
@@ -18,31 +20,43 @@ export function SearchForm() {
     const{register,handleSubmit,watch}=useForm<InputSearch>()
     const[searchData,setSearchData]=useState<EntityDataType<ProductType>>();
     const searchInput=watch('search')
-
     useEffect(() => {
-        if(searchInput && searchInput.length >= 1)
-        handleSubmit(onSubmit)()
+        if(searchInput)
+            delay();
         else{
             setSearchData()
         }
     }, [searchInput]);
-     const mutation=   useMutation({
-            mutationFn:(data:FilterData)=>getAllProducts({filters:data})
-        })
+
+    const mutation=   useMutation({
+        mutationFn:(data:FilterData)=>getAllProducts({filters:data,pagination:{
+                page:1,
+                pageSize:5,
+            }})
+    })
 
     const onSubmit = (data:InputSearch) => {
+        if( searchInput.length <= 1) return
         mutation.mutate({
-            title:{
-                '$contains':data.search
-            }
-        },{
-            onSuccess:(response:any)=>{
-                setSearchData(response.data);
-            }
+                title:{
+                    '$contains':data.search
+                }
+            },{
+                onSuccess:(response:any)=>{
+                    setSearchData(response.data);
+                }
             }
         )
 
     }
+    useOverlay({
+        onClick: () => {
+            setSearchData()
+        }
+    })
+
+    const delay=useDebounce(handleSubmit(onSubmit),1000)
+
 
 
     return (
