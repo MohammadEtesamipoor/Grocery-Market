@@ -1,4 +1,4 @@
-export const navItems = [
+const navItems = [
     {
         type: 'icon',
         label: "Hot Deals",

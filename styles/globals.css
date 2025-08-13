@@ -59,7 +59,7 @@
 
 .product-cart {
     @apply relative flex flex-col border-[0.5px]
-    border-[#d3ead9]  rounded-[10px] p-3
+    border-Nest-mart-background_grey2 rounded-[10px] p-3
     shadow-xs shadow-zinc-800/10
     w-fit max-w-40 min-h-64 lg:min-h-[425px] md:max-w-72 md:min-h-10 md:mb-5 md:min-w-72 gap-1 ;
 }
@@ -73,9 +73,9 @@
 }
 
 
-.sliceText {
-    @apply w-max overflow-ellipsis overflow-hidden max-w-[140px] line-clamp-2  md:max-w-fit md:min-h-10;
-}
+/*.sliceText {*/
+/*    @apply w-max overflow-ellipsis overflow-hidden max-w-[140px] line-clamp-2  md:max-w-fit md:min-h-10;*/
+/*}*/
 
 
 .product-label {
@@ -131,7 +131,7 @@
 }
 
 .top-product-info {
-    @apply flex flex-col gap-1.5;
+    @apply flex flex-col gap-1.5 ;
 }
 
 .contact-us {

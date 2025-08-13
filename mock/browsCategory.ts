@@ -1,4 +1,4 @@
-export const browsCategoryMock = [
+ const browsCategoryMock = [
     {iconName: "icon-groceries-1", title: "Milks and Dairies"},
     {iconName: "icon-dress-1", title: "Clothing & beauty"},
     {iconName: "icon-pet-food-1", title: "Pet Foods & Toy"},
