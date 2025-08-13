@@ -66,7 +66,7 @@ export default function Home() {
 }
 
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
     const queryClient = new QueryClient()
 
     await queryClient.prefetchQuery({

@@ -19,7 +19,10 @@ interface Props{
 export function ProductCardList({data}: Props) {
     return (
         <div className="top-product">
-            <ImageComponent src={data.thumbnail?.data?.attributes.url} alt={""} width={100} height={100} className={"aspect-square w-20 md:w-fit object-contain"} />
+            <ImageComponent src={data.thumbnail?.data?.attributes.url} alt={""} width={100} height={100}
+                            className={"aspect-square w-20 md:w-fit object-contain  rounded-md shadow-lg"}
+                            classNamePlaceHolder={"aspect-square w-20 md:w-fit object-contain  rounded-md shadow-lg"}
+            />
             <div className="top-product-info">
                 <p className="top-product-slice-text">{data.title}</p>
                 <div className="rating">

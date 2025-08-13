@@ -1,4 +1,4 @@
-export const productSlidesMock = [
+ const productSlidesMock = [
     {
         id: 1,
         label: "Sale",
@@ -84,7 +84,7 @@ export const productSlidesMock = [
     },
 ];
 
-export const OfferProductSlidesMock = [
+ const OfferProductSlidesMock = [
     {
         id: 1,
         label: "Sale",

@@ -1,4 +1,4 @@
-export const featuredCategoriesMock = [
+ const featuredCategoriesMock = [
     {
         id: 1,
         imgSrc: "/assets/images/food.png",

@@ -13,7 +13,7 @@ export const dealsDaysMock = [
         id: 2,
         imgSrc: "/assets/images/bg-deals-days-1.png",
         days: 8,
-        title: "Perdue Simply Smart Organics Gluten Free Breaded",
+        title: "Mushroom Simply Smart Organics Gluten Free Breaded",
         rating: 2,
         weight: "500 gram",
         priceCurrent: 8.51,
