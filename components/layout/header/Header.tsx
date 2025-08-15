@@ -1,15 +1,35 @@
-import React, {useState} from 'react';
-import {IconComponent, Logo, Menu, SearchForm} from "@/components";
+import React, {useEffect, useState} from 'react';
+import {IconComponent, Login, Logo, Menu, SearchForm} from "@/components";
+import {useModal} from "@/store/ModalContext";
+import {useOverlay} from "@/hooks/use-overlay";
 
 
 export function Header() {
     const [showMenu, setShowMenu] = useState<boolean>(false);
+    const {isModalOpen,openModal,closeModal}=useModal();
 
+    useOverlay({
+        onClick: () => {
+            closeModal()
+        }
+    })
+    useEffect(() => {
+        if (isModalOpen)
+            document.body.style.overflowY = "hidden";
+        else
+            document.body.style.overflowY = "auto";
+        return () => {
+            document.body.style.overflowY = "auto";
+        }
+    }, [isModalOpen]);
     const handelStateMenu = () => {
         setShowMenu(prev => !prev);
     }
     return (
         <header className="xl:mt-8 xl:flex xl:flex-col xl:gap-8">
+            {
+                isModalOpen && <Login />
+            }
             <nav className="py-4 flex justify-between items-center container xl:hidden ">
                 <Logo isMobile={true}/>
                 <div onClick={handelStateMenu} id="burger-btn" className="cursor-pointer">
@@ -23,11 +43,14 @@ export function Header() {
                 </div>
                 <SearchForm/>
                 <ul className={"flex gap-3 items-center"}>
-                    <li>
+                    <li onClick={(e)=>{
+                        e.stopPropagation()
+                        openModal()
+                    }} className={"cursor-pointer"}>
                         <IconComponent iconName={"user"} width={24} height={24} title={"Account"}
                                        titleClassName={"text-NestMartTextBody hidden xl:block"}/>
                     </li>
-                    <li>
+                    <li className={"cursor-pointer"}>
                         <IconComponent className={"fill-NestMartTextHeading "} iconName={"cart"} badge={4} width={24}
                                        titleClassName={"text-NestMartTextBody hidden xl:block"}
                                        height={24}
