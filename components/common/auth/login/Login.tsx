@@ -3,28 +3,28 @@ import * as React from 'react';
 import {ImageComponent, Modal, Register} from "@/components";
 import {useEffect, useState} from "react";
 import {useOverlay} from "@/hooks/use-overlay";
+import {useModal} from "@/store/ModalContext";
 
-type Props = {
-    setLogin: React.Dispatch<React.SetStateAction<boolean>>;
-};
 
-export function Login({setLogin}: Props) {
+export function Login() {
     const[register, setRegister] = useState<boolean>(false);
+    const {closeModal}=useModal();
 
     useOverlay({
         onClick: () => {
             setRegister(false)
         }
     })
-    useEffect(() => {
-        if (register)
-            document.body.style.overflowY = "hidden";
-        else
-            document.body.style.overflowY = "auto";
-        return () => {
-            document.body.style.overflowY = "auto";
-        }
-    }, [register]);
+    // useEffect(() => {
+    //     if (register)
+    //         document.body.style.overflowY = "hidden";
+    //     else
+    //         document.body.style.overflowY = "auto";
+    //     return () => {
+    //         document.body.style.overflowY = "auto";
+    //     }
+    // }, [register]);
+
     return (
         <>
             {register ?
@@ -41,7 +41,7 @@ export function Login({setLogin}: Props) {
                                 onClick={() => setRegister(prevState => !prevState)}
                             >Register</h3>
                         </div>
-                        <p className={"cursor-pointer"} onClick={()=>setLogin( (prevState:boolean) => !prevState)}>Close</p>
+                        <p className={"cursor-pointer"} onClick={()=>closeModal()}>Close</p>
                     </div>
                     <hr className={"border-gray-300"} />
                     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">

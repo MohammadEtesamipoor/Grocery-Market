@@ -1,33 +1,34 @@
 import React, {useEffect, useState} from 'react';
 import {IconComponent, Login, Logo, Menu, SearchForm} from "@/components";
+import {useModal} from "@/store/ModalContext";
 import {useOverlay} from "@/hooks/use-overlay";
 
 
 export function Header() {
     const [showMenu, setShowMenu] = useState<boolean>(false);
-    const[login, setLogin] = useState<boolean>(false);
+    const {isModalOpen,openModal,closeModal}=useModal();
 
     useOverlay({
         onClick: () => {
-            setLogin(false)
+            closeModal()
         }
     })
     useEffect(() => {
-        if (login)
+        if (isModalOpen)
             document.body.style.overflowY = "hidden";
         else
             document.body.style.overflowY = "auto";
         return () => {
             document.body.style.overflowY = "auto";
         }
-    }, [login]);
+    }, [isModalOpen]);
     const handelStateMenu = () => {
         setShowMenu(prev => !prev);
     }
     return (
         <header className="xl:mt-8 xl:flex xl:flex-col xl:gap-8">
             {
-                login && <Login setLogin={setLogin}/>
+                isModalOpen && <Login />
             }
             <nav className="py-4 flex justify-between items-center container xl:hidden ">
                 <Logo isMobile={true}/>
@@ -44,7 +45,7 @@ export function Header() {
                 <ul className={"flex gap-3 items-center"}>
                     <li onClick={(e)=>{
                         e.stopPropagation()
-                        setLogin(prevState => !prevState)
+                        openModal()
                     }} className={"cursor-pointer"}>
                         <IconComponent iconName={"user"} width={24} height={24} title={"Account"}
                                        titleClassName={"text-NestMartTextBody hidden xl:block"}/>
