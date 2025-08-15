@@ -3,19 +3,18 @@ import * as React from 'react';
 import {ImageComponent, Modal} from "@/components";
 
 type Props = {
-    setLogin: Function;
+    setLogin: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export function Login({setLogin}: Props) {
     return (
         <Modal>
-            <div>
-                <div className={"flex justify-between items-center  p-3 text-2xl text-NestMartTextHeading "}>
-                    <h1 className={""}>Login</h1>
-                    <p className={"cursor-pointer"} onClick={()=>setLogin(prevState => !prevState)}>Close</p>
-                </div>
-                <hr className={"border-gray-300"} />
-               <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-white">
+            <div className={"flex justify-between items-center  p-3 text-2xl text-NestMartTextHeading font-montserrat "}>
+                <h1 className={""}>Login</h1>
+                <p className={"cursor-pointer"} onClick={()=>setLogin( (prevState:boolean) => !prevState)}>Close</p>
+            </div>
+            <hr className={"border-gray-300"} />
+            <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm flex justify-center flex-col items-center">
                     <ImageComponent src={"/assets/images/login.png"} alt={"Company"}  width={100} height={100} />
                     <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-NestMartTextHeading">
@@ -69,7 +68,6 @@ export function Login({setLogin}: Props) {
                     </form>
 
                 </div>
-            </div>
             </div>
         </Modal>
     );

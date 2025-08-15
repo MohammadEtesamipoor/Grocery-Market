@@ -5,6 +5,7 @@ export default {
         extend: {
             animation: {
                 'bounce-1': 'bounce 1s ease-in-out 1',
+                'pulse-1': 'pulse 1s ease-in-out 1',
             },
             backgroundImage: {
                 'hero': " url('/assets/images/bg-hero-design-mobile.png')",
