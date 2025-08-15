@@ -12,9 +12,6 @@ export function Header() {
             setLogin(false)
         }
     })
-    const handelStateMenu = () => {
-        setShowMenu(prev => !prev);
-    }
     useEffect(() => {
         if (login)
             document.body.style.overflowY = "hidden";
@@ -24,6 +21,9 @@ export function Header() {
             document.body.style.overflowY = "auto";
         }
     }, [login]);
+    const handelStateMenu = () => {
+        setShowMenu(prev => !prev);
+    }
     return (
         <header className="xl:mt-8 xl:flex xl:flex-col xl:gap-8">
             {
