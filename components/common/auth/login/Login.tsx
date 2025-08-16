@@ -4,9 +4,16 @@ import {ImageComponent, Modal, Register} from "@/components";
 import {useEffect, useState} from "react";
 import {useOverlay} from "@/hooks/use-overlay";
 import {useModal} from "@/store/ModalContext";
+import {useForm} from "react-hook-form";
+import {ErrorMessage} from "@hookform/error-message";
 
+interface FormData {
+    email: string;
+    password: string;
+}
 
 export function Login() {
+    const {register:inputRegister, handleSubmit,formState:{errors}}=useForm<FormData>();
     const[register, setRegister] = useState<boolean>(false);
     const {closeModal}=useModal();
 
@@ -15,16 +22,10 @@ export function Login() {
             setRegister(false)
         }
     })
-    // useEffect(() => {
-    //     if (register)
-    //         document.body.style.overflowY = "hidden";
-    //     else
-    //         document.body.style.overflowY = "auto";
-    //     return () => {
-    //         document.body.style.overflowY = "auto";
-    //     }
-    // }, [register]);
 
+    const onSubmit=(data:FormData)=>{
+        console.log(data)
+    }
     return (
         <>
             {register ?
@@ -52,23 +53,23 @@ export function Login() {
                             </h2>
                         </div>
                         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                            <form action="#" method="POST" className="space-y-6">
+                            <form onSubmit={handleSubmit(onSubmit)} action="#" method="POST" className="space-y-6">
                                 <div>
-                                    <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+                                    <label htmlFor="email" className="text-gray-900">
                                         Email address
                                     </label>
-                                    <div className="mt-2">
+                                    <div className="mt-1">
                                         <input
                                             id="email"
-                                            name="email"
                                             type="email"
                                             required
-                                            autoComplete="email"
+                                            {...inputRegister("email",{required:"Enter email address"})}
                                             className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                         />
                                     </div>
+                                    <ErrorMessage errors={errors} name="email"
+                                                  render={({ message }) => <p className={"text-xs mt-1 text-red-600"}>{message}</p>}/>
                                 </div>
-
                                 <div>
                                     <div className="flex items-center justify-between">
                                         <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
@@ -78,23 +79,21 @@ export function Login() {
                                     <div className="mt-2">
                                         <input
                                             id="password"
-                                            name="password"
                                             type="password"
                                             required
-                                            autoComplete="current-password"
+                                            {...inputRegister("password",{required:true,minLength:{value:5,message:"Min 3 characters"}})}
                                             className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                         />
+                                        <ErrorMessage errors={errors} name="password"
+                                                      render={({ message }) => <p className={"text-xs mt-1 text-red-600"}>{message}</p>}/>
                                     </div>
                                 </div>
-
-                                <div>
-                                    <button
-                                        type="submit"
-                                        className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                    >
-                                        Sign in
-                                    </button>
-                                </div>
+                                <button
+                                    type="submit"
+                                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                >
+                                    Sign in
+                                </button>
                             </form>
                             <p className={"text-NestMartTextHeading mt-3"}>Dont have an account? <span
                                 onClick={()=>setRegister(prevState => !prevState)}
