@@ -54,7 +54,7 @@ export function Register({ setRegister }: Props) {
                             register={inputRegister}
                             registerOptions={{ required: "Enter email address" }}
                             errors={errors}
-                            placeholder="your.email@example.com"
+                            {...{placeholder:"your.email@example.com"}}
                         />
 
                         <Input
@@ -64,7 +64,7 @@ export function Register({ setRegister }: Props) {
                             register={inputRegister}
                             registerOptions={{ required: true, minLength: { value: 5, message: "Min 3 characters" } }}
                             errors={errors}
-                            placeholder="Enter password"
+                            {...{placeholder:"Enter password"}}
                         />
 
                         <Input
@@ -74,7 +74,7 @@ export function Register({ setRegister }: Props) {
                             register={inputRegister}
                             registerOptions={{ required: "Please confirm your password" }}
                             errors={errors}
-                            placeholder="Confirm your password"
+                            {...{placeholder:"Confirm your password"}}
                         />
 
                         <button

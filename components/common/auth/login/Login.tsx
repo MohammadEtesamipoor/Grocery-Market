@@ -52,8 +52,8 @@ export function Login() {
                                 <Input
                                     id="email"
                                     label="Email address"
+                                    {...{placeholder:"Enter your email"}}
                                     type="email"
-                                    placeholder="Enter your email"
                                     register={inputRegister}
                                     registerOptions={{ required: "Enter email address" }}
                                     errors={errors}
@@ -63,7 +63,7 @@ export function Login() {
                                     id="password"
                                     label="Password"
                                     type="password"
-                                    placeholder="Enter your password"
+                                    {...{placeholder:"Enter your password"}}
                                     register={inputRegister}
                                     registerOptions={{
                                         required: "Password is required",
