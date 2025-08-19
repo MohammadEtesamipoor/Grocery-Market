@@ -2,6 +2,8 @@
 import * as React from 'react';
 import {ImageComponent, Input, Modal} from "@/components";
 import { useForm } from "react-hook-form";
+import {useMutation} from "@tanstack/react-query";
+import {registerApiCall} from "@/api/Auth/Auth";
 
 
 type Props = {
@@ -9,16 +11,22 @@ type Props = {
 };
 
 type FormData = {
+    username: string;
     email: string;
     password: string;
-    "confirm-password": string;
 };
 
 export function Register({ setRegister }: Props) {
     const { register: inputRegister, handleSubmit, formState: { errors } } = useForm<FormData>();
+    const mutate=useMutation({mutationFn:registerApiCall})
 
     const onSubmit = (data: FormData) => {
-        console.log(data);
+        console.log(data)
+        mutate.mutate(data,{
+            onSuccess: (res) => {
+                console.log(res);
+            }
+        })
     };
 
     return (
@@ -48,13 +56,22 @@ export function Register({ setRegister }: Props) {
                     <form onSubmit={handleSubmit(onSubmit)} action="#" method="POST" className="space-y-6">
 
                         <Input
+                            id="username"
+                            label="User Name"
+                            type="text"
+                            register={inputRegister}
+                            registerOptions={{ required: "Enter user name" }}
+                            errors={errors}
+                            {...{placeholder:"John week"}}
+                        />
+
+                        <Input
                             id="email"
-                            label="Email address"
+                            label="Email"
                             type="email"
                             register={inputRegister}
-                            registerOptions={{ required: "Enter email address" }}
-                            errors={errors}
-                            placeholder="your.email@example.com"
+                             errors={errors}
+                            {...{placeholder:"Enter email address"}}
                         />
 
                         <Input
@@ -64,17 +81,7 @@ export function Register({ setRegister }: Props) {
                             register={inputRegister}
                             registerOptions={{ required: true, minLength: { value: 5, message: "Min 3 characters" } }}
                             errors={errors}
-                            placeholder="Enter password"
-                        />
-
-                        <Input
-                            id="confirm-password"
-                            label="Confirm password"
-                            type="password"
-                            register={inputRegister}
-                            registerOptions={{ required: "Please confirm your password" }}
-                            errors={errors}
-                            placeholder="Confirm your password"
+                            {...{placeholder:"Enter password"}}
                         />
 
                         <button
