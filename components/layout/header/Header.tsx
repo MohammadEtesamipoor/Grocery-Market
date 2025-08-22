@@ -8,7 +8,7 @@ import {useAuth} from "@/store/Auth";
 export function Header() {
     const [showMenu, setShowMenu] = useState<boolean>(false);
     const {isModalOpen,openModal,closeModal}=useModal();
-    const{isLogin}=useAuth()
+    const{isLogin,logout}=useAuth()
     useOverlay({
         onClick: () => {
             closeModal()
@@ -54,8 +54,13 @@ export function Header() {
                                            titleClassName={"text-NestMartTextBody hidden xl:block"}/>
                         </li>
                             :
+
                             <li onClick={(e)=>{
                                 e.stopPropagation()
+                                const isConfirmed = confirm("Are you sure to log out?");
+                                if (isConfirmed) {
+                                    logout();
+                                }
                             }} className={"cursor-pointer"}>
                                 <IconComponent iconName={"user"} width={24} height={24} title={"Logout"}
                                                titleClassName={"text-NestMartTextBody hidden xl:block"}/>
