@@ -11,6 +11,7 @@ import {ToastContainer} from "react-toastify";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import React from "react";
 import {ModalProvider} from "@/store/ModalContext";
+import {AuthContextProvider} from "@/store/Auth";
 
 const quicksand = Quicksand({
     subsets: ["latin"]
@@ -48,14 +49,16 @@ export default function App({Component, pageProps}: AppProps) {
             </style>
             <QueryClientProvider client={queryClient}>
                 <HydrationBoundary state={pageProps.dehydratedState}>
-                    <ModalProvider>
-                    <Layout>
-                        <Component {...pageProps} />
-                    </Layout>
-                    </ModalProvider>
-                    <ToastContainer closeOnClick={true} draggable={false} theme={"light"} position={"top-right"}
-                                    hideProgressBar={false} autoClose={false}/>
-                    <ReactQueryDevtools  client={queryClient} initialIsOpen={false}/>
+                    <AuthContextProvider>
+                        <ModalProvider>
+                        <Layout>
+                            <Component {...pageProps} />
+                        </Layout>
+                        </ModalProvider>
+                    </AuthContextProvider>
+                        <ToastContainer closeOnClick={true} draggable={false} theme={"light"} position={"top-right"}
+                                        hideProgressBar={false} autoClose={false}/>
+                        <ReactQueryDevtools  client={queryClient} initialIsOpen={false}/>
                 </HydrationBoundary>
             </QueryClientProvider>
 
