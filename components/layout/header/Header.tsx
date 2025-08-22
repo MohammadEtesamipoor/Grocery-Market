@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {IconComponent, Login, Logo, Menu, SearchForm} from "@/components";
 import {useModal} from "@/store/ModalContext";
 import {useOverlay} from "@/hooks/use-overlay";
+import {useAuth} from "@/store/Auth";
 
 
 export function Header() {
     const [showMenu, setShowMenu] = useState<boolean>(false);
     const {isModalOpen,openModal,closeModal}=useModal();
-
+    const{isLogin}=useAuth()
     useOverlay({
         onClick: () => {
             closeModal()
@@ -43,13 +44,24 @@ export function Header() {
                 </div>
                 <SearchForm/>
                 <ul className={"flex gap-3 items-center"}>
-                    <li onClick={(e)=>{
-                        e.stopPropagation()
-                        openModal()
-                    }} className={"cursor-pointer"}>
-                        <IconComponent iconName={"user"} width={24} height={24} title={"Account"}
-                                       titleClassName={"text-NestMartTextBody hidden xl:block"}/>
-                    </li>
+                    {
+                        !isLogin ?
+                        <li onClick={(e)=>{
+                            e.stopPropagation()
+                            openModal()
+                        }} className={"cursor-pointer"}>
+                            <IconComponent iconName={"user"} width={24} height={24} title={"Account"}
+                                           titleClassName={"text-NestMartTextBody hidden xl:block"}/>
+                        </li>
+                            :
+                            <li onClick={(e)=>{
+                                e.stopPropagation()
+                            }} className={"cursor-pointer"}>
+                                <IconComponent iconName={"user"} width={24} height={24} title={"Logout"}
+                                               titleClassName={"text-NestMartTextBody hidden xl:block"}/>
+                            </li>
+
+                    }
                     <li className={"cursor-pointer"}>
                         <IconComponent className={"fill-NestMartTextHeading "} iconName={"cart"} badge={4} width={24}
                                        titleClassName={"text-NestMartTextBody hidden xl:block"}

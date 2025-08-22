@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import {useMutation} from "@tanstack/react-query";
 import {registerApiCall} from "@/api/Auth/Auth";
 import {useAuth} from "@/store/Auth";
+import {toast} from "react-toastify";
 
 
 type Props = {
@@ -22,10 +23,15 @@ export function Register({ setRegister }: Props) {
     const mutate=useMutation({mutationFn:registerApiCall})
     const {login}=useAuth();
     const onSubmit = (data: FormData) => {
-        console.log(data)
         mutate.mutate(data,{
             onSuccess: (res) => {
                 login(res.jwt,res.user);
+                toast.success("Register successful");
+                setRegister(false);
+            },
+            onError: (err:any) => {
+                toast.error(err.response.data.error.message)
+                setRegister(false);
             }
         })
     };

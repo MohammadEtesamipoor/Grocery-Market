@@ -1,5 +1,5 @@
 import axios from "axios";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 const BASE_URL = "https://nest.navaxcollege.com/api";
 
@@ -23,45 +23,45 @@ AxiosClient.interceptors.response.use(
         if (error.response) {
             switch (error.response.status) {
                 case 400:
-                    toast.error('درخواست اشتباه است. لطفاً اطلاعات را بررسی کنید.');
+                    toast.error('Bad request. Please check your input.');
                     break;
                 case 401:
-                    toast.error('لطفا وارد شوید');
+                    toast.error('Please log in.');
                     break;
                 case 403:
-                    toast.error('شما اجازه دسترسی به این منبع را ندارید.');
+                    toast.error('You do not have permission to access this resource.');
                     break;
                 case 404:
-                    toast.error('صفحه یا منبع مورد نظر یافت نشد.');
+                    toast.error('The requested page or resource was not found.');
                     break;
                 case 409:
-                    toast.error('تضاد در داده‌ها وجود دارد.');
+                    toast.error('There is a conflict with the current data.');
                     break;
                 case 422:
-                    toast.error('داده‌های ارسال شده نامعتبر هستند.');
+                    toast.error('The submitted data is invalid.');
                     break;
                 case 429:
-                    toast.error('تعداد درخواست‌ها بیش از حد مجاز است. لطفاً بعداً تلاش کنید.');
+                    toast.error('Too many requests. Please try again later.');
                     break;
                 case 500:
-                    toast.error('خطای داخلی سرور. لطفاً بعداً دوباره تلاش کنید.');
+                    toast.error('Internal server error. Please try again later.');
                     break;
                 case 502:
-                    toast.error('خطای دروازه. سرور پاسخ مناسبی نمی‌دهد.');
+                    toast.error('Bad gateway. The server is not responding correctly.');
                     break;
                 case 503:
-                    toast.error('سرویس موقتا در دسترس نیست.');
+                    toast.error('Service temporarily unavailable.');
                     break;
                 case 504:
-                    toast.error('سرور پاسخگو نیست، زمان انتظار تمام شد.');
+                    toast.error('Server is unresponsive; the request timed out.');
                     break;
                 default:
-                    toast.error(`خطای نامشخص رخ داده است: ${error.response.status}`);
+                    toast.error(`An unknown error has occurred: ${error.response.status}`);
             }
         } else if (error.request) {
-            toast.error('خطا در ارتباط با سرور. لطفاً اتصال اینترنت خود را بررسی کنید.');
+            toast.error('Connection error. Please check your internet connection.');
         } else {
-            toast.error(`خطا اتفاق افتاده است: ${error.message}`);
+            toast.error(`An error has occurred: ${error.message}`);
         }
 
         return Promise.reject(error);
