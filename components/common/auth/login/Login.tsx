@@ -4,9 +4,13 @@ import { useState } from "react";
 import { useOverlay } from "@/hooks/use-overlay";
 import { useModal } from "@/store/ModalContext";
 import { useForm } from "react-hook-form";
+import {useMutation} from "@tanstack/react-query";
+import {loginApiCall} from "@/api/Auth/Auth";
+import {useAuth} from "@/store/Auth";
+import {toast} from "react-toastify";
 
 interface FormData {
-    email: string;
+    identifier: string;
     password: string;
 }
 
@@ -14,6 +18,8 @@ export function Login() {
     const { register: inputRegister, handleSubmit, formState: { errors } } = useForm<FormData>();
     const [register, setRegister] = useState<boolean>(false);
     const { closeModal } = useModal();
+    const mutate=useMutation({mutationFn:loginApiCall})
+    const {login}=useAuth();
 
     useOverlay({
         onClick: () => {
@@ -22,8 +28,19 @@ export function Login() {
     });
 
     const onSubmit = (data: FormData) => {
-        console.log(data);
+        mutate.mutate(data,{
+            onSuccess: (res) => {
+                login(res.jwt,res.user);
+                toast.success("Login successful");
+                closeModal();
+            },
+           onError: (err:any) => {
+                toast.error(err.response.data.error.message)
+               closeModal();
+           }
+        })
     };
+
 
     return (
         <>
@@ -50,13 +67,13 @@ export function Login() {
                         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                             <form onSubmit={handleSubmit(onSubmit)} action="#" method="POST" className="space-y-6">
                                 <Input
-                                    id="email"
-                                    label="Email address"
-                                    {...{placeholder:"Enter your email"}}
-                                    type="email"
+                                    id="identifier"
+                                    label="User Name"
+                                    type="text"
                                     register={inputRegister}
-                                    registerOptions={{ required: "Enter email address" }}
+                                    registerOptions={{ required: "Enter user name" }}
                                     errors={errors}
+                                    {...{placeholder:"John week"}}
                                 />
 
                                 <Input

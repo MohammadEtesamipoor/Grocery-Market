@@ -1,0 +1,118 @@
+export const productListSectionMock =  [
+    {
+        title: "Trending Products",
+        products: [
+            {
+                id: 1,
+                img: "/assets/images/top-product1.png",
+                name: "Nestle Original Coffee-Mate Coffee Creamer",
+                rating: 5,
+                price: 2.51,
+                oldPrice: 2.00,
+            },
+            {
+                id: 2,
+                img: "/assets/images/top-product2.png",
+                name: "Nestle Original Coffee-Mate Coffee Creamer",
+                rating: 5,
+                price: 2.51,
+                oldPrice: 2.00,
+            },
+            {
+                id: 3,
+                img: "/assets/images/top-product3.png",
+                name: "Nestle Original Coffee-Mate Coffee Creamer",
+                rating: 5,
+                price: 2.51,
+                oldPrice: 2.00,
+            },
+        ],
+    },
+    {
+        title: "Top Selling",
+        products: [
+            {
+                id: 1,
+                img: "/assets/images/top-product1.png",
+                name: "Nestle Original Coffee-Mate Coffee Creamer",
+                rating: 5,
+                price: 2.51,
+                oldPrice: 2.00,
+            },
+            {
+                id: 2,
+                img: "/assets/images/top-product2.png",
+                name: "Nestle Original Coffee-Mate Coffee Creamer",
+                rating: 5,
+                price: 2.51,
+                oldPrice: 2.00,
+            },
+            {
+                id: 3,
+                img: "/assets/images/top-product3.png",
+                name: "Nestle Original Coffee-Mate Coffee Creamer",
+                rating: 5,
+                price: 2.51,
+                oldPrice: 2.00,
+            },
+        ],
+    },
+    {
+        title: "Recently added",
+        products: [
+            {
+                id: 1,
+                img: "/assets/images/top-product1.png",
+                name: "Nestle Original Coffee-Mate Coffee Creamer",
+                rating: 5,
+                price: 2.51,
+                oldPrice: 2.00,
+            },
+            {
+                id: 2,
+                img: "/assets/images/top-product2.png",
+                name: "Nestle Original Coffee-Mate Coffee Creamer",
+                rating: 5,
+                price: 2.51,
+                oldPrice: 2.00,
+            },
+            {
+                id: 3,
+                img: "/assets/images/top-product3.png",
+                name: "Nestle Original Coffee-Mate Coffee Creamer",
+                rating: 5,
+                price: 2.51,
+                oldPrice: 2.00,
+            },
+        ],
+    },
+    {
+        title: "Top Rated",
+        products: [
+            {
+                id: 1,
+                img: "/assets/images/top-product1.png",
+                name: "Nestle Original Coffee-Mate Coffee Creamer",
+                rating: 5,
+                price: 2.51,
+                oldPrice: 2.00,
+            },
+            {
+                id: 2,
+                img: "/assets/images/top-product2.png",
+                name: "Nestle Original Coffee-Mate Coffee Creamer",
+                rating: 5,
+                price: 2.51,
+                oldPrice: 2.00,
+            },
+            {
+                id: 3,
+                img: "/assets/images/top-product3.png",
+                name: "Nestle Original Coffee-Mate Coffee Creamer",
+                rating: 5,
+                price: 2.51,
+                oldPrice: 2.00,
+            },
+        ],
+    },
+];
