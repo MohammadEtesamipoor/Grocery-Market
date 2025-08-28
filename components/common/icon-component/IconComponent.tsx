@@ -25,31 +25,11 @@ export function IconComponent({
                                   titleClassName,
                                   linkClassName,
                               }: IconComponentProps) {
-    return (
-        !link ?
-              <span className={"flex gap-2.5"}>
-                        <span className={"relative h-fit"}>
-                <svg className={className}
-                     style={{ width: width, height: height }} viewBox={`0 0 ${width} ${height}`}
-                     xmlns="http://www.w3.org/2000/svg"
-                     preserveAspectRatio="xMidYMid meet">
-                    <use href={`/assets/icons/sprite.svg#${iconName}`}></use>
-                </svg>
-                            {
-                                badge &&
-                                <div
-                                    className="w-4 h-4  flex justify-center items-center text-white p-2.5 absolute rounded-full z-10 bg-NestMartBrand1 text-xs -top-2.5 -right-2.5 ">
-                                    {badge}
-                                </div>
-                            }
-            </span>
+    const baseClass = `flex gap-2.5 ${className ?? ''}`.trim();
+    const linkClass = `flex gap-2.5 ${linkClassName ?? ''}`.trim();
 
-            {title &&
-                <span className={titleClassName}>{title}</span>
-            }
-        </span>
-            :
-            <Link href={link ?? "#"} className={"flex gap-2.5  " + linkClassName}>
+    const inner = (
+        <>
             <span className={"relative h-fit"}>
                 <svg className={className}
                      style={{ width: width, height: height }} viewBox={`0 0 ${width} ${height}`}
@@ -57,18 +37,24 @@ export function IconComponent({
                      preserveAspectRatio="xMidYMid meet">
                     <use href={`/assets/icons/sprite.svg#${iconName}`}></use>
                 </svg>
-                {
-                    badge &&
-                    <div
-                        className="w-4 h-4  flex justify-center items-center text-white p-2.5 absolute rounded-full z-10 bg-NestMartBrand1 text-xs -top-2.5 -right-2.5 ">
+                {badge && (
+                    <div className="w-4 h-4  flex justify-center items-center text-white p-2.5 absolute rounded-full z-10 bg-NestMartBrand1 text-xs -top-2.5 -right-2.5 ">
                         {badge}
                     </div>
-                }
+                )}
             </span>
+            {title && <span className={titleClassName}>{title}</span>}
+        </>
+    );
 
-                {title &&
-                    <span className={titleClassName}>{title}</span>
-                }
-            </Link>
-    )
+    if (!link) {
+        return <span className={baseClass}>{inner}</span>;
+    }
+
+    // use legacyBehavior to ensure consistent <a> output on server and client
+    return (
+        <Link href={link ?? "#"} legacyBehavior>
+            <a className={linkClass}>{inner}</a>
+        </Link>
+    );
 }

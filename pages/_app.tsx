@@ -12,6 +12,7 @@ import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import React from "react";
 import {ModalProvider} from "@/store/ModalContext";
 import {AuthContextProvider} from "@/store/Auth";
+import CartProvider from "@/store/Cart";
 
 const quicksand = Quicksand({
     subsets: ["latin"]
@@ -51,9 +52,11 @@ export default function App({Component, pageProps}: AppProps) {
                 <HydrationBoundary state={pageProps.dehydratedState}>
                     <AuthContextProvider>
                         <ModalProvider>
-                        <Layout>
-                            <Component {...pageProps} />
-                        </Layout>
+                            <CartProvider>
+                                <Layout>
+                                    <Component {...pageProps} />
+                                </Layout>
+                            </CartProvider>
                         </ModalProvider>
                     </AuthContextProvider>
                         <ToastContainer closeOnClick={true} draggable={false} theme={"light"} position={"top-right"}

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {IconComponent, Login, Logo, SearchForm, Modal} from "@/components";
+import {useCart} from "@/store/Cart";
 import {useModal} from "@/store/ModalContext";
 import {useOverlay} from "@/hooks/use-overlay";
 import {useAuth} from "@/store/Auth";
@@ -94,14 +95,23 @@ export function Header({showMenu, setShowMenu}: HeaderProps) {
 
                     }
                     <li className={"cursor-pointer"}>
-                        <IconComponent className={"fill-NestMartTextHeading "} iconName={"cart"} badge={4} width={24}
-                                       titleClassName={"text-NestMartTextBody hidden xl:block"}
-                                       height={24}
-                                       title={"Cart"}/>
+                        <CartIcon />
                     </li>
                 </ul>
             </div>
             {/* Menu is rendered outside header so it doesn't stick with the header */}
         </header>
     );
+}
+
+function CartIcon(){
+    const {totalItems} = useCart();
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => { setMounted(true); }, []);
+    return (
+        <IconComponent link="/cart" className={"fill-NestMartTextHeading " } iconName={"cart"} badge={mounted ? totalItems : 0} width={24}
+                       titleClassName={"text-NestMartTextBody hidden xl:block"}
+                       height={24}
+                       title={"Cart"}/>
+    )
 }
