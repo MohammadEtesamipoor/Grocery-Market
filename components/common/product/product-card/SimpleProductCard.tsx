@@ -2,7 +2,9 @@ import {Badge, IconComponent, ImageComponent, Rating, SoldBarProduct} from "@/co
 import Link from "next/link";
 import {ProductType} from "@/types/Api/Product";
 import {ChangeEvent} from "react";
+import {toast} from 'react-toastify';
 import useProductCount from "@/hooks/use-product-count";
+import {useCart} from "@/store/Cart";
 
 interface Props {
     data: ProductType;
@@ -11,6 +13,13 @@ interface Props {
 
 export function SimpleProductCard({data}: Props) {
     const { productCount, handelInputValue, handelClickValue } = useProductCount();
+    const { addItem } = useCart();
+
+    const handleAdd = () => {
+        const qty = Number(productCount) || 1;
+        addItem(data, qty);
+        toast.success('Added to cart');
+    }
     return (
         <div className={"w-40 md:w-72 mb-1.5 lg:mb-0"}>
             <div className="product-cart">
@@ -47,15 +56,13 @@ export function SimpleProductCard({data}: Props) {
                                     onClick={handelClickValue}
                                     placeholder="Add +"/>}
                         </div>
-                        {
-                            data.sold && <>
-                                <SoldBarProduct sold={data.sold} total={Number(data.total)}/>
-                                <button className="cart-btn">
-                                    <IconComponent className={"fill-white"} iconName={"cart"} width={16} height={16}/>
-                                    Add To Cart
-                                </button>
-                            </>
-                        }
+                        <div className="flex items-center gap-3">
+                            {data.sold && <SoldBarProduct sold={data.sold} total={Number(data.total)}/>} 
+                            <button onClick={handleAdd} className="cart-btn">
+                                <IconComponent className={"fill-white"} iconName={"cart"} width={16} height={16}/>
+                                Add To Cart
+                            </button>
+                        </div>
                     </>
                 }
 
